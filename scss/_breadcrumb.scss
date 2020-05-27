@@ -5,7 +5,7 @@
 	min-height: 900px;
 	display: flex;
 	background: linear-gradient(rgba(3, 1, 10, 0.5), rgba(3, 1, 10, 0.5)),
-		url(../img/banner/back.jpg) no-repeat scroll center center;
+		url(../img/banner/home-banner.jpg) no-repeat scroll center center;
 	background-size: cover;
 	.banner_inner {
 		width: 100%;
@@ -65,7 +65,7 @@
 		z-index: 1;
 		.overlay {
 			background: linear-gradient(0deg, rgba(6, 13, 1, .6), rgba(6, 13, 1, .6)),
-				url(../img/banner/back.jpg) no-repeat scroll center center;
+				url(../img/banner/banner.jpg) no-repeat scroll center center;
 			background-size: cover;
 			position: absolute;
 			left: 0;
