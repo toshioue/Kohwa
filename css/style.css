@@ -150,7 +150,7 @@ button:focus {
 ============================================================================================ */
 .primary_btn {
   display: inline-block;
-  background: #60bc0f;
+  background: #0fabbc;
   padding: 0px 50px;
   color: #fff;
   font-family: "Roboto", sans-serif;
@@ -204,7 +204,7 @@ button:focus {
         .header_area .navbar .nav .nav-item .nav-link:after {
           display: none; }
       .header_area .navbar .nav .nav-item:hover .nav-link, .header_area .navbar .nav .nav-item.active .nav-link {
-        color: #60bc0f; }
+        color: #0fabbc; }
       .header_area .navbar .nav .nav-item.submenu {
         position: relative; }
         .header_area .navbar .nav .nav-item.submenu ul {
@@ -484,7 +484,7 @@ button:focus {
       line-height: 34px;
       padding: 0 20px; }
     .features_causes .card .donation span {
-      color: #60bc0f; }
+      color: #0fabbc; }
     .features_causes .card .card-text {
       margin-bottom: 0; }
     .features_causes .card:hover {
