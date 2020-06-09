@@ -101,7 +101,7 @@ button:focus {
 /*---------------------------------------------------- */
 /*----------------------------------------------------*/
 .section_gap {
-  padding: 130px 0px; }
+  padding: 80px 0px; } /* padding for contact form */
   @media (max-width: 991px) {
     .section_gap {
       padding: 70px 0; } }
@@ -416,7 +416,7 @@ button:focus {
 /* Start Causes Area css
 ============================================================================================ */
 .causes_area {
-  padding: 130px 0px 100px; }
+  padding: 20px 0px 100px; }
   @media (max-width: 991px) {
     .causes_area {
       padding: 70px 0px 40px; } }
@@ -2766,6 +2766,118 @@ h6 {
     .footer-bottom .footer-text a {
       color: #60bc0f;
       opacity: 1; }
+
+/**this is added on css by Hitoshi Oue **/
+.causes_area .card-header {
+    font-size: 200%;
+    color: black;
+}
+
+/*.card:hover {
+  	transform: scale(1.1);
+    color: black;
+}*/
+
+/* Image zoom on hover + Overlay colour */
+.parent {
+    width: 45%;
+    margin: 20px;
+    height: 300px;
+    border: 1px solid blue;
+    overflow: hidden;
+    position: relative;
+    float: left;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.child {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+
+/* Several different images */
+.bg-health {background-image: url(../img/causes/health.jpg);
+background-size: cover;
+background-repeat: no-repeat;}
+.bg-culture {background-image: url(../img/causes/culture.jpg);
+background-size: cover;
+background-repeat: no-repeat;}
+.bg-cap {background-image: url(../img/causes/capacity.jpg);
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;}
+.bg-resource {background-image: url(../img/causes/resources.jpg);
+background-size: cover;
+background-repeat: no-repeat;}
+.bg-four {background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Hollywood_Sign.jpg/1280px-Hollywood_Sign.jpg);}
+.bg-five {background-image: url(http://www.travelandleisure.com/sites/default/files/styles/tnl_redesign_article_landing_page/public/1453920892/DUBAI-554088081-ABOVE0116.jpg?itok=dcoZnCrc);}
+.bg-six {background-image: url(http://blog.whitepages.com/wp-content/uploads/2015/04/san-franc.jpg);}
+
+
+.wrapper a {
+    display: none;
+    font-size: 35px;
+    color: #ffffff !important;
+    font-family: sans-serif;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 50px;
+    cursor: pointer;
+    /*text-decoration: none;*/
+}
+
+.parent:hover .child, .parent:focus .child {
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.parent:hover .child:before, .parent:focus .child:before {
+    display: block;
+}
+
+.parent:hover a, .parent:focus a {
+    display: block;
+}
+
+.child:before {
+    content: "";
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(52,73,94,0.75);
+}
+
+/* Media Queries */
+@media screen and (max-width: 960px) {
+    .parent {width: 100%; margin: 20px 0px}
+        .wrapper {padding: 20px 20px;}
+}
+
+/* meant for h1 for mission and vision */
+ u {
+  color: black;
+  background-color: black;
+}
+
+
 
 /*---------------------------------------------------- */
 

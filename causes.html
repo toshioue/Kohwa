@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="css/responsive.css">
     </head>
 <body>
-        
+
     <!--================ Start Header Menu Area =================-->
     <header class="header_area">
         <div class="main_menu">
@@ -34,34 +34,42 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                             <ul class="nav navbar-nav menu_nav ml-auto">
-                                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li> 
-                                <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li> 
+                                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                                <li class="nav-item submenu dropdown">
+                                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About</a>
+                                  <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="about-us.html">Who we are</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="about-us.html">Teams</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="about-us.html">Board of Directors</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="about-us.html">Board of Advisors</a></li>
+                                  </ul>
+                                </li>
                                 <li class="nav-item active"><a class="nav-link" href="causes.html">Causes</a>
                                 <li class="nav-item submenu dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Press Releases</a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item"><a class="nav-link" href="events.html">Events</a>
-                                        <li class="nav-item"><a class="nav-link" href="event-details.html">Event Details</a> 
+                                        <li class="nav-item"><a class="nav-link" href="event-details.html">Event Details</a>
                                         <li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
                                     </ul>
-                                </li> 
-                                <li class="nav-item submenu dropdown">
+                                </li>
+                                <!--<li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
                                         <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
                                     </ul>
-                                </li> 
+                                </li>-->
                                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                             </ul>
-                        </div> 
+                        </div>
                     </div>
                 </nav>
             </div>
         </div>
     </header>
     <!--================ End Header Menu Area =================-->
-        
+
     <!--================ Home Banner Area =================-->
     <section class="banner_area">
         <div class="banner_inner d-flex align-items-center">
@@ -75,15 +83,118 @@
         </div>
     </section>
     <!--================ End Home Banner Area =================-->
-	
+
 	<!--================ Start Causes Area =================-->
 	<section class="causes_area">
         <div class="container">
-            <div class="main_title">
+          <!--  <div class="main_title">
                 <h2>Our major causes</h2>
                 <p>Creepeth called face upon face yielding midst is after moveth </p>
-            </div>
-            <div class="row">
+            </div>-->
+            <div class="card text-white bg-success mb-3 text-center" style="width: 100%; height: 20em;">
+  <div class="card-header">Sustainable Resource Management</div>
+  <div class="card-body bg-resource">
+    <h5 class="card-title"> Chibberish</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+
+
+
+
+<div class="card text-white bg-primary mb-3 text-center " style="width: 100%; height: 20em;">
+  <div class="card-header">Awareness on Health and Education</div>
+  <div class="card-body bg-health">
+    <h5 class="card-title">Secondary card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+<div class="card text-white bg-danger  mb-3 text-center" style="width: 100%; height: 20em;">
+  <div class="card-header">Cultural and Historical Preservation</div>
+  <div class="card-body bg-culture ">
+    <h5 class="card-title">Success card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+<div class="card text-white bg-warning  mb-3 text-center" style="width: 100%; height: 20em;">
+  <div class="card-header">Capacity Building</div>
+  <div class="card-body bg-cap">
+    <h5 class="card-title">Danger card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+
+
+<!--added feature -->
+<!--<div class="wrapper">
+    <div class="parent" onclick="">
+        <div class="child bg-one">
+            <a href="#">Los Angeles</a>
+        </div>
+    </div></div>-->
+
+<!--<div class="accordion text-center" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Collapsible Group Item #1
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Collapsible Group Item #2
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Collapsible Group Item #3
+        </button>
+      </h2>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" id="headingFour">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Collapsible Group Item #3
+        </button>
+      </h2>
+    </div>
+    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+
+</div>-->
+            <!--<div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="single_causes">
                         <h4>Give Donation</h4>
@@ -111,13 +222,12 @@
                         </p>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>-->
     </section>
     <!--================ End Causes Area =================-->
 
 	<!--================ Start Features Cause section =================-->
-	<section class="features_causes">
+<!--	<section class="features_causes">
         <div class="container">
             <div class="main_title">
                 <h2>Featured causes</h2>
@@ -196,27 +306,27 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
     <!--================ End Features Cause section =================-->
 
 	<!--================ Start CTA Area =================-->
-	<div class="cta-area section_gap overlay">
+<!--	<div class="cta-area section_gap overlay">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-7">
                     <h1>Become a volunteer</h1>
                     <p>
-                        So seed seed green that winged cattle in. Gathering thing made fly you're 
+                        So seed seed green that winged cattle in. Gathering thing made fly you're
                         divided deep leave on the medicene moved us land years living.
                     </p>
                     <a href="#" class="primary_btn yellow_btn rounded">join with us</a>
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <!--================ End CTA Area =================-->
-        
-    <!--================ Start footer Area  =================-->	
+
+    <!--================ Start footer Area  =================-->
     <footer>
         <div class="footer-area">
             <div class="container">
@@ -225,11 +335,11 @@
                         <div class="single-footer-widget tp_widgets">
                             <h4 class="footer_title large_title">Our Mission</h4>
                             <p>
-                                So seed seed green that winged cattle in. Gathering thing made fly you're no 
-                                divided deep moved us lan Gathering thing us land years living.
+                              We work with communites to improve sustainable practices and promote environmental stewardship through
+                                alternative livelihoods and community education on health, environment, and cultural heritage in Pohnpei.
                             </p>
                             <p>
-                                So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved 
+                                So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved
                             </p>
                         </div>
                     </div>
@@ -267,8 +377,8 @@
                                     <span class="fa fa-location-arrow"></span>
                                     Head Office
                                 </p>
-                                <p>123, Main Street, Your City</p>
-    
+                                <p>Pohnpei, Micronesia 96941</p>
+
                                 <p class="sm-head">
                                     <span class="fa fa-phone"></span>
                                     Phone Number
@@ -277,14 +387,14 @@
                                     +123 456 7890 <br>
                                     +123 456 7890
                                 </p>
-    
+
                                 <p class="sm-head">
                                     <span class="fa fa-envelope"></span>
                                     Email
                                 </p>
                                 <p>
-                                    free@infoexample.com <br>
-                                    www.infoexample.com
+                                    kowha-fsm@gmail.cpm <br>
+                                    www.kowha.fm
                                 </p>
                             </div>
                         </div>
@@ -304,8 +414,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             </div>
         </div>
     </footer>
-    <!--================ End footer Area  =================-->  
-        
+    <!--================ End footer Area  =================-->
+
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="js/jquery-3.2.1.min.js"></script>
