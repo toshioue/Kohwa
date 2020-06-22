@@ -1,3 +1,6 @@
+
+
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -34,7 +37,7 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                           <ul class="nav navbar-nav menu_nav ml-auto">
-                            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item "><a class="nav-link" href="index.html">Home</a></li>
                             <li class="nav-item submenu dropdown">
                               <a href="about-us.html" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About</a>
                               <ul class="dropdown-menu">
@@ -61,7 +64,7 @@
                                 <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
                               </ul>
                             </li> -->
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="contact.html">Contact</a></li>
                           </ul>
                         </div>
                     </div>
@@ -78,7 +81,7 @@
             <div class="container">
                 <div class="banner_content text-center">
                     <h2>Contact Us</h2>
-                    <p>Platea nullam nostra laoreet potenti hendrerit laoreet enim nisl</p>
+                    <p></p>
                 </div>
             </div>
         </div>
