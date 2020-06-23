@@ -1,4 +1,49 @@
+<?php
+$check = false;
+if(isset($_POST['submit'])){
+  $to = "yoshimistuyoshi@gmail.com";
+  $from = $_POST['email'];
+  $name = $_POST['name'];
+  $subject = $_POST['subject'];
+  //$number = $_POST['number'];
+  $cmessage = $_POST['message'];
 
+  $headers = "From: $from";
+$headers = "From: " . $from . "\r\n";
+$headers .= "Reply-To: ". $from . "\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+  $subject = "Message from " . $name . ".";
+
+  $logo = 'img/logo.png';
+  $link = '#';
+
+$body = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Express Mail</title></head><body>";
+$body .= "<table style='width: 100%;'>";
+$body .= "<thead style='text-align: center;'><tr><td style='border:none;' colspan='2'>";
+$body .= "<a href='{$link}'><img src='{$logo}' alt=''></a><br><br>";
+$body .= "</td></tr></thead><tbody><tr>";
+$body .= "<td style='border:none;'><strong>Name:</strong> {$name}</td>";
+$body .= "<td style='border:none;'><strong>Email:</strong> {$from}</td>";
+$body .= "</tr>";
+$body .= "<tr><td style='border:none;'><strong>Subject:</strong> {$subject}</td></tr>";
+$body .= "<tr><td></td></tr>";
+$body .= "<tr><td colspan='2' style='border:none;'>{$cmessage}</td></tr>";
+$body .= "</tbody></table>";
+$body .= "</body></html>";
+
+if (mail($to, $subject, $body, $headers))
+{
+    $check = true;
+    echo 'The message has been sent.';
+}else{
+    echo 'failed';
+}
+
+}
+
+ ?>
 
 
 <!doctype html>
@@ -64,7 +109,7 @@
                                 <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
                               </ul>
                             </li> -->
-                            <li class="nav-item active"><a class="nav-link" href="contact.html">Contact</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="contact.php">Contact</a></li>
                           </ul>
                         </div>
                     </div>
@@ -120,7 +165,7 @@
                     </div>
                 </div>
                 <div class="col-lg-9" style="background-color: #0fabbc; padding-top: 30px; padding-bottom: 20px;">
-                    <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                    <form class="row contact_form" action="contact.php" method="POST"  novalidate="novalidate"> <!-- use id="contactForm"-->
                         <div class="col-md-6">
                             <div class="form-group border border-success ">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
@@ -138,7 +183,7 @@
                             </div>
                         </div>
                         <div class="col-md-12 text-right">
-                            <button type="submit" value="submit" class="btn primary_btn" style=" background-color: #28a745; ">Send Message</button>
+                            <input type="submit" value="submit" name="submit" class="btn primary_btn" style=" background-color: #28a745; ">
                         </div>
                     </form>
                 </div>
@@ -259,7 +304,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!--================ End footer Area  =================-->
 
     <!--================Contact Success and Error message Area =================-->
-    <div id="success" class="modal modal-message fade" role="dialog">
+    <div id="success"  class="modal modal-message fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -272,6 +317,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             </div>
         </div>
     </div>
+
 
     <!-- Modals error -->
     <div id="error" class="modal modal-message fade" role="dialog">
@@ -291,7 +337,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 
-
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="js/jquery-3.2.1.min.js"></script>
@@ -305,10 +350,18 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <!-- contact js -->
         <script src="js/jquery.form.js"></script>
         <script src="js/jquery.validate.min.js"></script>
-        <script src="js/contact.js"></script>
         <!--gmaps Js-->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
         <script src="js/gmaps.min.js"></script>
         <script src="js/theme.js"></script>
     </body>
+
+    <script>
+  <?php
+    if($check){
+      echo "$('#success').modal('show');";
+    }
+
+    ?>
+    </script>
 </html>
