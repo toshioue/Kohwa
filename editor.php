@@ -1,3 +1,11 @@
+<?php
+if(isset($_POST['submit'])){
+
+   var_dump($_POST);
+}
+
+
+ ?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -5,13 +13,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="img/favicon.png" type="image/png">
-        <title>About Us</title>
+        <title>Editor</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="vendors/linericon/style.css">
         <link rel="stylesheet" href="css/font-awesome.min.css">
         <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
-        <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
+      <!--  <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">-->
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <!-- main css -->
         <link rel="stylesheet" href="css/style.css">
@@ -79,12 +87,26 @@
 
       <!--======================WHO WE ARE =======================-->
     <section style="margin-top:5vh;" >
+    <?php echo file_get_contents("modal.html"); ?>
         <!-- Create the editor container -->
-<div id="editor" style="padding-bottom:30vh;">
+<form action="editor.php" method="POST">
+<div class="container">
+<h5>Title: <h5S>
+<input class="form-control-xlg" type="text" id="subj" name="subj" required minlength="5" maxlength="80" style="width:100%;"><br><br>
+<label>Date Today: &nbsp;</label><input type="text" name="date" id="date" required value="<?php echo date('F', strtotime("2000-" .date("m") . "-01")) . " " . date("d, Y");?>" />
+</br>
+</div>
+<input type="hidden" name="quill-html" id="quill-html">
+<div id="editor"S style="padding-bottom:30vh;">
 <p>Hello World!</p>
 <p>Some initial <strong>bold</strong> text</p>
 <p><br></p>
 </div>
+<textarea name="text" style="display:none" id="textBox" name="textBox"></textarea>
+<div class="container">
+<input type="submit" class="btn btn-lg btn-block btn-primary mt-3" value="submit" name="submit">
+</div>
+</form>
 <!-- Include the Quill library -->
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
@@ -112,11 +134,56 @@ var toolbarOptions = [
 
       var quill = new Quill('#editor', {
           modules: {
-              toolbar: toolbarOptions
+              toolbar: toolbarOptions,
+              handlers: { image: quill_img_handler }
           },
 
           theme: 'snow'
+
+
       });
+
+    function quill_img_handler() {
+    let fileInput = this.container.querySelector('input.ql-image[type=file]');
+
+    if (fileInput == null) {
+        fileInput = document.createElement('input');
+        fileInput.setAttribute('type', 'file');
+        fileInput.setAttribute('accept', 'image/png, image/gif, image/jpeg, image/bmp, image/x-icon');
+        fileInput.classList.add('ql-image');
+        fileInput.addEventListener('change', () => {
+            const files = fileInput.files;
+            const range = this.quill.getSelection(true);
+
+            if (!files || !files.length) {
+                console.log('No files selected');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', files[0]);
+
+            this.quill.enable(false);
+
+            axios
+                .post('/api/image', formData)
+                .then(response => {
+                    this.quill.enable(true);
+                    this.quill.editor.insertEmbed(range.index, 'image', response.data.url_path);
+                    this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
+                    fileInput.value = '';
+                })
+                .catch(error => {
+                    console.log('quill image upload failed');
+                    console.log(error);
+                    this.quill.enable(true);
+                });
+        });
+        this.container.appendChild(fileInput);
+    }
+    fileInput.click();
+}  
+
 </script>
 
    </section>
@@ -225,5 +292,19 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
         <script src="js/gmaps.min.js"></script>
         <script src="js/theme.js"></script>
+
+        <!--custom js-->
+        <script src="js/ajax.js"></script>
+        <script>
+
+
+var form = document.querySelector('form');
+form.onsubmit = function() {
+
+var discussionContent =  document.querySelector('input[name=quill-html]');
+discussionContent.value = JSON.stringify(quill.getContents());
+};
+</script>
+        </script>
     </body>
 </html>
