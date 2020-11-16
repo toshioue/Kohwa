@@ -25,6 +25,6 @@ function AJAX_POST(ajaxBaseUrl, ajaxVars, callFunction, callArgs) {
     counter++;
   }
   console.log("Ajax POST URL:", ajaxBaseUrl);
-  xhttp.open("POST", ajaxBaseUrl, true);
+  xhttp.open("GET", ajaxBaseUrl, true);
   xhttp.send();
 }

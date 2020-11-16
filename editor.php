@@ -3,8 +3,6 @@ if(isset($_POST['submit'])){
 
    var_dump($_POST);
 }
-
-
  ?>
 <!doctype html>
 <html lang="en">
@@ -89,100 +87,166 @@ if(isset($_POST['submit'])){
     <section style="margin-top:5vh;" >
     <?php echo file_get_contents("modal.html"); ?>
         <!-- Create the editor container -->
-<form action="editor.php" method="POST">
+
 <div class="container">
 <h5>Title: <h5S>
 <input class="form-control-xlg" type="text" id="subj" name="subj" required minlength="5" maxlength="80" style="width:100%;"><br><br>
 <label>Date Today: &nbsp;</label><input type="text" name="date" id="date" required value="<?php echo date('F', strtotime("2000-" .date("m") . "-01")) . " " . date("d, Y");?>" />
 </br>
+
+<div id="imagePath">
+  <label for="files">Select images that will be used in the Post:</label>
+  <input type="file" id="images" name="images">  <br>
+  <button id="uploadImages">Upload</button>
 </div>
-<input type="hidden" name="quill-html" id="quill-html">
-<div id="editor"S style="padding-bottom:30vh;">
-<p>Hello World!</p>
-<p>Some initial <strong>bold</strong> text</p>
-<p><br></p>
+  <br><br>
+<br>
 </div>
+<!--prime placeholder for editor.js -->
+<div id="editorjs" class="border border-dark"></div>
+<!--end -->
 <textarea name="text" style="display:none" id="textBox" name="textBox"></textarea>
 <div class="container">
 <input type="submit" class="btn btn-lg btn-block btn-primary mt-3" value="submit" name="submit">
 </div>
-</form>
-<!-- Include the Quill library -->
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
-<!-- Initialize Quill editor -->
+
+<!-- Load Tools -->
+<!--
+ You can upload Tools to your project's directory and use as in example below.
+ Also you can load each Tool from CDN or use NPM/Yarn packages.
+ Read more in Tool's README file. For example:
+ https://github.com/editor-js/header#installation
+ -->
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script><!-- Header -->
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script><!-- Image -->
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@latest"></script><!-- Delimiter -->
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script><!-- List -->
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/checklist@latest"></script><!-- Checklist -->
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@latest"></script><!-- Quote -->
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/code@latest"></script><!-- Code -->
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script><!-- Embed -->
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/table@latest"></script><!-- Table -->
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/link@latest"></script><!-- Link -->
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/warning@latest"></script><!-- Warning -->
+
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@latest"></script><!-- Marker -->
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/inline-code@latest"></script><!-- Inline Code -->
+
+<script src="js/editor.js"></script>
+
+
+<!-- Initialize editor.js -->
 <script>
-var toolbarOptions = [
-              ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-              ['blockquote', 'code-block'],
+var editor = new EditorJS({
+    /**
+     * Create a holder for the Editor and pass its ID
+     */
+    holder : 'editorjs',
 
-              [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-              [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-              [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-              [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-              [{ 'direction': 'rtl' }],                         // text direction
-
-              [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-              [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-              [ 'link', 'image', 'video', 'formula' ],          // add's image support
-              [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-              [{ 'font': [] }],
-              [{ 'align': [] }],
-
-              ['clean']                                         // remove formatting button
-          ];
-
-      var quill = new Quill('#editor', {
-          modules: {
-              toolbar: toolbarOptions,
-              handlers: { image: quill_img_handler }
-          },
-
-          theme: 'snow'
+    /**
+     * Common Inline Toolbar settings
+     * - if true (or not specified), the order from 'tool' property will be used
+     * - if an array of tool names, this order will be used
+     */
+    // inlineToolbar: ['link', 'marker', 'bold', 'italic'],
+    // inlineToolbar: true,
 
 
-      });
+    /**
+     * Available Tools list.
+     * Pass Tool's class or Settings object for each Tool you want to use
+     */
+     tools: {
+       /**
+        * Each Tool is a Plugin. Pass them via 'class' option with necessary settings {@link docs/tools.md}
+        */
+       header: {
+         class: Header,
+         config: {
+           placeholder: 'Enter a header',
+           levels: [2, 3, 4],
+           defaultLevel: 3
+         }
 
-    function quill_img_handler() {
-    let fileInput = this.container.querySelector('input.ql-image[type=file]');
+       },
 
-    if (fileInput == null) {
-        fileInput = document.createElement('input');
-        fileInput.setAttribute('type', 'file');
-        fileInput.setAttribute('accept', 'image/png, image/gif, image/jpeg, image/bmp, image/x-icon');
-        fileInput.classList.add('ql-image');
-        fileInput.addEventListener('change', () => {
-            const files = fileInput.files;
-            const range = this.quill.getSelection(true);
+       /**
+        * Or pass class directly without any configuration
+        */
+        image: {
+       class: SimpleImage,
 
-            if (!files || !files.length) {
-                console.log('No files selected');
-                return;
-            }
+     },
 
-            const formData = new FormData();
-            formData.append('file', files[0]);
+       list: {
+         class: List,
+         inlineToolbar: true,
+         shortcut: 'CMD+SHIFT+L'
+       },
 
-            this.quill.enable(false);
+       checklist: {
+         class: Checklist,
+         inlineToolbar: true,
+       },
 
-            axios
-                .post('/api/image', formData)
-                .then(response => {
-                    this.quill.enable(true);
-                    this.quill.editor.insertEmbed(range.index, 'image', response.data.url_path);
-                    this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
-                    fileInput.value = '';
-                })
-                .catch(error => {
-                    console.log('quill image upload failed');
-                    console.log(error);
-                    this.quill.enable(true);
-                });
-        });
-        this.container.appendChild(fileInput);
-    }
-    fileInput.click();
-}  
+       quote: {
+         class: Quote,
+         inlineToolbar: true,
+         config: {
+           quotePlaceholder: 'Enter a quote',
+           captionPlaceholder: 'Quote\'s author',
+         },
+         shortcut: 'CMD+SHIFT+O'
+       },
+
+       warning: Warning,
+
+       marker: {
+         class:  Marker,
+         shortcut: 'CMD+SHIFT+M'
+       },
+
+       code: {
+         class:  CodeTool,
+         shortcut: 'CMD+SHIFT+C'
+       },
+
+       delimiter: Delimiter,
+
+       inlineCode: {
+         class: InlineCode,
+         shortcut: 'CMD+SHIFT+C'
+       },
+
+       linkTool: LinkTool,
+
+       embed: Embed,
+
+       table: {
+         class: Table,
+         inlineToolbar: true,
+         shortcut: 'CMD+ALT+T'
+       },
+        // ...
+    },
+
+    /**
+     * Previously saved data that should be rendered
+     */
+    data: {}
+});
+
+editor.isReady
+  .then(() => {
+    console.log('Editor.js is ready to work!')
+    /** Do anything you need after editor initialization */
+  })
+  .catch((reason) => {
+    console.log(`Editor.js initialization failed because of ${reason}`)
+  });
+
+
 
 </script>
 
@@ -295,16 +359,35 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
         <!--custom js-->
         <script src="js/ajax.js"></script>
-        <script>
+
+      <script>
 
 
-var form = document.querySelector('form');
-form.onsubmit = function() {
+//for saving images
+$('#uploadImages').on('click', function() {
+    console.log($('#images').prop('files'));
+    var file_data = $('#images').prop('files')[0];
+    var form_data = new FormData();
+    form_data.append('file', file_data);
+    console.log(form_data);
+    $.ajax({
+        url: 'uploadFile.php', // point to server-side PHP script
+        dataType: 'text',  // what to expect back from the PHP script, if anything
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        type: 'post',
+        success: function(php_script_response){
+            //alert(php_script_response); // display response from the PHP script, if any
+            $('#imagePath').append('<br><input type="text" value=' + php_script_response + " />");
+        }
+     });
+});
 
-var discussionContent =  document.querySelector('input[name=quill-html]');
-discussionContent.value = JSON.stringify(quill.getContents());
-};
-</script>
-        </script>
+
+
+
+       </script>
     </body>
 </html>
