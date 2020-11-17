@@ -1,22 +1,33 @@
 <?php
 require_once('mysql.inc.php');
 
-if(isset($_POST['contents'])){
+//Need to do some authentication first with sessions variable,
+
+//connect to DB if session match and user is authenticated
+//connect to database
   $db = new myConnectDB();          # Connect to MySQL
   //check if connecting to DB draws error
   if (mysqli_connect_errno()) {
       echo "<h5>ERROR: " . mysqli_connect_errno() . ": " . mysqli_connect_error() . " </h5><br>";
     }
 
-  if(isset($_POST['subj']) && isset($_POST['date'])){
-
-     insertPost($db, $_POST['subj'], $_POST['content'], $_POST['date']);
-
-  }
+if(isset($_POST['content']) && isset($_POST['subj']) && isset($_POST['date'])){
 
 
+     $arr = json_encode($_POST['content']);
+     insertPost($db, $_POST['subj'], $arr, date('Y-m-d'));
 
-  }
+
+   }elseif(isset($_GET['postID'])){
+
+        getPost($db, $_GET['postID']);
+
+}else{
+
+  echo 'no action done';
+}
+
+
 
 
 
@@ -125,7 +136,7 @@ function logoff($db, $sessionid){
 function insertPost($db, $title, $body, $date){
   /////////////////////////////////////////////
 
-  $insert = "INSERT INTO Posts (Title, Content, Date) VALUES (?, ?, ?)";
+  $insert = "INSERT INTO Posts (Title, Content, DateCreated) VALUES (?, ?, ?)";
   $stmt = $db->stmt_init();
   $stmt->prepare($insert);
   //bind
@@ -137,7 +148,7 @@ function insertPost($db, $title, $body, $date){
   if(!$sucess || $db->affected_rows == 0){
     echo "<h2>ERROR: " . $db->error . "for query</h2>"; // error statement
   }else{
-    //echo "<h2>Signup Success!</h2>"; //print if entry is sucess!
+    echo "<h2>Post was uploaded Successfully!</h2>"; //print if entry is sucess!
 
     $stmt->close();
   }
@@ -145,10 +156,11 @@ function insertPost($db, $title, $body, $date){
 
 //function to get specific post and comments
 function getPost($db, $postID){
+  $content = '';
+  $date = '';
+  $title = '';
 
-
-    $query = "SELECT * FROM Discussions where PostID = ?";
-    $query2 = "SELECT Comment, Author, Stamp FROM Comments where PostID = ?";
+    $query = "SELECT Title, Content, DateCreated FROM Posts where PostID = ?";
     $stmt = $db->stmt_init();
     $stmt->prepare($query);
     //bind
@@ -156,57 +168,25 @@ function getPost($db, $postID){
     $sucess = $stmt->execute();
     //check to see if DB insert was successful if not print DB error
     if(!$sucess || $db->affected_rows == 0){
-      //echo "ERROR: " . $db->error . " for query"; // error statement
+      echo "ERROR: " . $db->error . " for query"; // error statement
       //echo "username does not exists in DB";
     //  echo 0;
     }else{
-        $stmt->bind_result($id, $date, $T, $B, $A, $C, $V, $com);
+        $stmt->bind_result($title, $content, $date);
 
         while($stmt->fetch()){
-          $date = date("F j, Y, g:i a", strtotime($date));
-          $post = "<div id='onePost' class='text-wrap text-break container'>
-          <h1 class='display-4 text-dark' id='title'><u>" . $T . "</u><h1><hr>
-          <h4 class='lead' id='by'> written by <kbd>" . $A . "</kbd> on " . $date . "<kbd style='background-color: orange; font-size:12px; margin-left: 5px;'> "  . $C . "</kbd></h4>
-          <p class='border border-secondary rounded' style='font-size:18px; white-space: pre-line'>" . $B . "<p></div>
-          <div id='comments' style='width:100%'></div><hr><h6>Comments:</h6>";
+          //$content = json_decode($content);
+          $arr[0] = str_replace('[', '', $content);
+          $arr[0] = str_replace(']', '', $arr[0]);
+          $arr[1] = $date;
+          $arr[2] = $title;
+
+          echo json_encode($arr);
+
         }
         $stmt->close();
-        $stmt = $db->stmt_init();
-        $stmt->prepare($query2);
-        //bind
-        $stmt->bind_param('i', $postID);
-        $sucess = $stmt->execute();
-        //check to see if DB insert was successful if not print DB error
-        if(!$sucess || $db->affected_rows == 0){
-          echo "ERROR: " . $db->error . " for query"; // error statement
-          //echo "username does not exists in DB";
-          //echo "$";
-        }else{
-
-        $stmt->bind_result($comment, $author, $stamp);
-        $i = 0;
-        while($stmt->fetch()){
-          $stamp = date("F j, Y, g:i a", strtotime($stamp));
-          if($i & 1){  $align = 'text-right';}else{$align = 'text-left';}
-          $post .= "<div class='border border-secondary rounded $align' style='width:80%;'>
-          <div class='bg-secondary'><label class=;text-light' style='font-size:13px;' id='by'>: <kbd>" . $author . "</kbd> on " . $stamp . "</label></div></hr>
-          <p class='text-dark' style='font-size:20px; white-space: pre-line'>" . $comment . "</p>
-          </div><br/>";
-          $i++;
-        }
-
-
-      }
-      if(isset($_SESSION['user'])){$disable = "onclick='insertComment($postID)'";}else{$disable = "disabled";}
-      $post .= "<label>[" . $com . "] Add Comment</label><br/><div style= 'margin-left: 5px;'>
-      <textarea id='insertComment' name='insertComment' minlength='2' cols='20' rows='4' style='resize:none; width:60%;'></textarea><br/>
-      <button class='btn btn-xs btn-secondary' $disable  type='button' name='insertComment'>submit</button>
-      </div></div>";
-      updateViews($db, $postID);
-      echo $post;
-
-    }
   }
+}
 
 
 

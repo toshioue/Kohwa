@@ -23,7 +23,6 @@ if(isset($_POST['submit'])){
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
         <!-- Include stylesheet -->
-        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     </head>
 <body>
 
@@ -107,7 +106,7 @@ if(isset($_POST['submit'])){
 <!--end -->
 <textarea name="text" style="display:none" id="textBox" name="textBox"></textarea>
 <div class="container">
-<input type="submit" class="btn btn-lg btn-block btn-primary mt-3" value="submit" name="submit">
+<button id="submit" class="btn btn-lg btn-block btn-primary mt-3">Submit</button>
 </div>
 
 
@@ -237,6 +236,7 @@ var editor = new EditorJS({
     data: {}
 });
 
+//editor is async load, using statement below to debug whether editor.js loads
 editor.isReady
   .then(() => {
     console.log('Editor.js is ready to work!')
@@ -245,6 +245,9 @@ editor.isReady
   .catch((reason) => {
     console.log(`Editor.js initialization failed because of ${reason}`)
   });
+
+
+
 
 
 
@@ -363,7 +366,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
       <script>
 
 
-//for saving images
+//for uploading images to the server and using them to make a post.
 $('#uploadImages').on('click', function() {
     console.log($('#images').prop('files'));
     var file_data = $('#images').prop('files')[0];
@@ -384,6 +387,48 @@ $('#uploadImages').on('click', function() {
         }
      });
 });
+
+$("#submit").on("click", function(){
+  console.log("submit button was clicked");
+  $('#modalTitle').append($('#subj').val());
+  $('#Modal').modal('show');
+});
+
+
+
+function makePost(){
+//grab blocks/content from the editors
+editor.save().then((outputData) => {
+  console.log('Article data: ', outputData);
+  console.log(outputData.blocks);
+
+  //Perform AJAX call to server.php and pass variables to interval
+  var form_data = new FormData();
+  form_data.append('subj', $('#subj').val());
+  form_data.append('date', $('#date').val());
+  form_data.append('content', JSON.stringify(outputData.blocks));
+  $.ajax({
+      url: 'server.php', // point to server-side PHP script
+      dataType: 'text',  // what to expect back from the PHP script, if anything
+      cache: false,
+      contentType: false,
+      processData: false,
+      data: form_data,
+      type: 'post',
+      success: function(php_script_response){
+          $('#post').prop('disabled', true);
+          console.log(php_script_response);
+          $('#modalBody').html("<h1>" + php_script_response + "</h1>");
+      }
+   });
+
+}).catch((error) => {
+  console.log('Saving failed: ', error);
+});
+}
+
+
+
 
 
 

@@ -1,6 +1,6 @@
 // Generic Ajax GET Function, will call callFunction
 // upon receipt of results. ajaxVars will be converted from JSON string to URL?key=value&key1=value1 sequence
-function AJAX_POST(ajaxBaseUrl, ajaxVars, callFunction, callArgs) {
+function AJAX_GET(ajaxBaseUrl, ajaxVars, callFunction, callArgs) {
   var xhttp;
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -24,7 +24,7 @@ function AJAX_POST(ajaxBaseUrl, ajaxVars, callFunction, callArgs) {
     ajaxBaseUrl += encodeURIComponent(key) + '=' + encodeURIComponent(ajaxVars[key]);
     counter++;
   }
-  console.log("Ajax POST URL:", ajaxBaseUrl);
+  console.log("Ajax GET URL:", ajaxBaseUrl);
   xhttp.open("GET", ajaxBaseUrl, true);
   xhttp.send();
 }

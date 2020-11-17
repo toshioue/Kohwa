@@ -1,3 +1,7 @@
+<?php
+
+ ?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -17,7 +21,7 @@
         <link rel="stylesheet" href="css/responsive.css">
     </head>
 <body>
-        
+
         <!--================ Start Header Menu Area =================-->
         <header class="header_area">
             <div class="main_menu">
@@ -34,34 +38,34 @@
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                                 <ul class="nav navbar-nav menu_nav ml-auto">
-                                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li> 
-                                    <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li> 
+                                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
                                     <li class="nav-item"><a class="nav-link" href="causes.html">Causes</a>
                                     <li class="nav-item submenu dropdown">
                                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
                                         <ul class="dropdown-menu">
                                             <li class="nav-item"><a class="nav-link" href="events.html">Events</a>
-                                            <li class="nav-item"><a class="nav-link" href="event-details.html">Event Details</a> 
+                                            <li class="nav-item"><a class="nav-link" href="event-details.html">Event Details</a>
                                             <li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
                                         </ul>
-                                    </li> 
+                                    </li>
                                     <li class="nav-item submenu dropdown active">
                                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
                                         <ul class="dropdown-menu">
                                             <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
                                             <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
                                         </ul>
-                                    </li> 
+                                    </li>
                                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                                 </ul>
-                            </div> 
+                            </div>
                         </div>
                     </nav>
                 </div>
             </div>
         </header>
         <!--================ End Header Menu Area =================-->
-            
+
         <!--================ Home Banner Area =================-->
         <section class="banner_area">
             <div class="banner_inner d-flex align-items-center">
@@ -75,103 +79,14 @@
             </div>
         </section>
         <!--================ End Home Banner Area =================-->
-        
+
         <!--================Blog Area =================-->
         <section class="blog_area single-post-area section_gap">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 posts-list">
-                        <div class="single-post row">
-                            <div class="col-lg-12">
-                                <div class="feature-img">
-                                    <img class="img-fluid" src="img/blog/feature-img1.jpg" alt="">
-                                </div>									
-                            </div>
-                            <div class="col-lg-3  col-md-3">
-                                <div class="blog_info text-right">
-                                    <div class="post_tag">
-                                        <a href="#">Food,</a>
-                                        <a class="active" href="#">Technology,</a>
-                                        <a href="#">Politics,</a>
-                                        <a href="#">Lifestyle</a>
-                                    </div>
-                                    <ul class="blog_meta list">
-                                        <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
-                                        <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
-                                        <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                        <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
-                                    </ul>
-                                    <ul class="social-links">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-github"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-lg-9 col-md-9 blog_details">
-                                <h2>Astronomy Binoculars A Great Alternative</h2>
-                                <p class="excert">
-                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.
-                                </p>
-                                <p>
-                                    Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed
-                                </p>
-                                <p>
-                                    Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed
-                                </p>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="quotes">
-                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training.										
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <img class="img-fluid" src="img/blog/post-img1.jpg" alt="">
-                                    </div>
-                                    <div class="col-6">
-                                        <img class="img-fluid" src="img/blog/post-img2.jpg" alt="">
-                                    </div>	
-                                    <div class="col-lg-12 mt-25">
-                                        <p>
-                                            MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower.
-                                        </p>
-                                        <p>
-                                            MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower.
-                                        </p>											
-                                    </div>									
-                                </div>
-                            </div>
-                        </div>
-                        <div class="navigation-area">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                                    <div class="thumb">
-                                        <a href="#"><img class="img-fluid" src="img/blog/prev.jpg" alt=""></a>
-                                    </div>
-                                    <div class="arrow">
-                                        <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
-                                    </div>
-                                    <div class="detials">
-                                        <p>Prev Post</p>
-                                        <a href="#"><h4>Space The Final Frontier</h4></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-                                    <div class="detials">
-                                        <p>Next Post</p>
-                                        <a href="#"><h4>Telescopes 101</h4></a>
-                                    </div>
-                                    <div class="arrow">
-                                        <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
-                                    </div>
-                                    <div class="thumb">
-                                        <a href="#"><img class="img-fluid" src="img/blog/next.jpg" alt=""></a>
-                                    </div>										
-                                </div>									
-                            </div>
-                        </div>
-                        <div class="comments-area">
+            <h1 id="title" class="h1 text-center text-dark mr-2">Place Holder</h1>
+            <small id="date" class="text-center ml-4">Date Placeholder</small>
+            <div id="editorjs" class="border border-dark"></div>
+        </section>
+                      <!--  <div class="comments-area">
                             <h4>05 Comments</h4>
                             <div class="comment-list">
                                 <div class="single-comment justify-content-between d-flex">
@@ -188,10 +103,10 @@
                                         </div>
                                     </div>
                                     <div class="reply-btn">
-                                           <a href="" class="btn-reply text-uppercase">reply</a> 
+                                           <a href="" class="btn-reply text-uppercase">reply</a>
                                     </div>
                                 </div>
-                            </div>	
+                            </div>
                             <div class="comment-list left-padding">
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
@@ -207,10 +122,10 @@
                                         </div>
                                     </div>
                                     <div class="reply-btn">
-                                           <a href="" class="btn-reply text-uppercase">reply</a> 
+                                           <a href="" class="btn-reply text-uppercase">reply</a>
                                     </div>
                                 </div>
-                            </div>	
+                            </div>
                             <div class="comment-list left-padding">
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
@@ -226,10 +141,10 @@
                                         </div>
                                     </div>
                                     <div class="reply-btn">
-                                           <a href="" class="btn-reply text-uppercase">reply</a> 
+                                           <a href="" class="btn-reply text-uppercase">reply</a>
                                     </div>
                                 </div>
-                            </div>	
+                            </div>
                             <div class="comment-list">
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
@@ -245,10 +160,10 @@
                                         </div>
                                     </div>
                                     <div class="reply-btn">
-                                           <a href="" class="btn-reply text-uppercase">reply</a> 
+                                           <a href="" class="btn-reply text-uppercase">reply</a>
                                     </div>
                                 </div>
-                            </div>	
+                            </div>
                             <div class="comment-list">
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
@@ -264,12 +179,12 @@
                                         </div>
                                     </div>
                                     <div class="reply-btn">
-                                           <a href="" class="btn-reply text-uppercase">reply</a> 
+                                           <a href="" class="btn-reply text-uppercase">reply</a>
                                     </div>
                                 </div>
-                            </div>	                                             				
-                        </div>
-                        <div class="comment-form">
+                            </div>
+                        </div>-->
+                      <!--  <div class="comment-form">
                             <h4>Leave a Reply</h4>
                             <form>
                                 <div class="form-group form-inline">
@@ -278,7 +193,7 @@
                                   </div>
                                   <div class="form-group col-lg-6 col-md-6 email">
                                     <input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
-                                  </div>										
+                                  </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
@@ -286,7 +201,7 @@
                                 <div class="form-group">
                                     <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
                                 </div>
-                                <a href="#" class="primary-btn primary_btn">Post Comment</a>	
+                                <a href="#" class="primary-btn primary_btn">Post Comment</a>
                             </form>
                         </div>
                     </div>
@@ -298,10 +213,10 @@
                                     <span class="input-group-btn">
                                         <button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
                                     </span>
-                                </div><!-- /input-group -->
-                                <div class="br"></div>
-                            </aside>
-                            <aside class="single_sidebar_widget author_widget">
+                                </div><!-->
+                          <!--      <div class="br"></div>
+                          </aside>-->
+                          <!--  <aside class="single_sidebar_widget author_widget">
                                 <img class="author_img rounded-circle" src="img/blog/author.png" alt="">
                                 <h4>Charlie Barber</h4>
                                 <p>Senior blog writer</p>
@@ -313,8 +228,8 @@
                                 </div>
                                 <p>Boot camps have its supporters andit sdetractors. Some people do not understand why you should have to spend money on boot camp when you can get. Boot camps have itssuppor ters andits detractors.</p>
                                 <div class="br"></div>
-                            </aside>
-                            <aside class="single_sidebar_widget popular_post_widget">
+                            </aside>-->
+                          <!--  <aside class="single_sidebar_widget popular_post_widget">
                                 <h3 class="widget_title">Popular Posts</h3>
                                 <div class="media post_item">
                                     <img src="img/blog/popular-post/post1.jpg" alt="post">
@@ -345,8 +260,8 @@
                                     </div>
                                 </div>
                                 <div class="br"></div>
-                            </aside>
-                            <aside class="single_sidebar_widget ads_widget">
+                            </aside>-->
+                          <!--  <aside class="single_sidebar_widget ads_widget">
                                 <a href="#"><img class="img-fluid" src="img/blog/add.jpg" alt=""></a>
                                 <div class="br"></div>
                             </aside>
@@ -394,7 +309,7 @@
                                             <p>Adventure</p>
                                             <p>44</p>
                                         </a>
-                                    </li>															
+                                    </li>
                                 </ul>
                                 <div class="br"></div>
                             </aside>
@@ -412,9 +327,9 @@
                                         <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
                                     </div>
                                     <a href="#" class="bbtns">Subcribe</a>
-                                </div>	
-                                <p class="text-bottom">You can unsubscribe at any time</p>	
-                                <div class="br"></div>							
+                                </div>
+                                <p class="text-bottom">You can unsubscribe at any time</p>
+                                <div class="br"></div>
                             </aside>
                             <aside class="single-sidebar-widget tag_cloud_widget">
                                 <h4 class="widget_title">Tag Clouds</h4>
@@ -437,10 +352,10 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section>-->
         <!--================Blog Area =================-->
-        
-         <!--================ Start footer Area  =================-->	
+
+         <!--================ Start footer Area  =================-->
     <footer>
             <div class="footer-area">
                 <div class="container">
@@ -449,11 +364,11 @@
                             <div class="single-footer-widget tp_widgets">
                                 <h4 class="footer_title large_title">Our Mission</h4>
                                 <p>
-                                    So seed seed green that winged cattle in. Gathering thing made fly you're no 
+                                    So seed seed green that winged cattle in. Gathering thing made fly you're no
                                     divided deep moved us lan Gathering thing us land years living.
                                 </p>
                                 <p>
-                                    So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved 
+                                    So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved
                                 </p>
                             </div>
                         </div>
@@ -492,7 +407,7 @@
                                         Head Office
                                     </p>
                                     <p>123, Main Street, Your City</p>
-        
+
                                     <p class="sm-head">
                                         <span class="fa fa-phone"></span>
                                         Phone Number
@@ -501,7 +416,7 @@
                                         +123 456 7890 <br>
                                         +123 456 7890
                                     </p>
-        
+
                                     <p class="sm-head">
                                         <span class="fa fa-envelope"></span>
                                         Email
@@ -516,7 +431,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="footer-bottom">
                 <div class="container">
                     <div class="row d-flex">
@@ -528,11 +443,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 </div>
             </div>
         </footer>
-        <!--================ End footer Area  =================--> 
-        
-        
-        
-        
+        <!--================ End footer Area  =================-->
+
+
+
+
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="js/jquery-3.2.1.min.js"></script>
@@ -544,5 +459,198 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <script src="js/jquery.ajaxchimp.min.js"></script>
         <script src="js/mail-script.js"></script>
         <script src="js/theme.js"></script>
+        <!--custom js-->
+        <script src="js/ajax.js"></script>
+        <!-- Load Tools -->
+        <!--
+         You can upload Tools to your project's directory and use as in example below.
+         Also you can load each Tool from CDN or use NPM/Yarn packages.
+         Read more in Tool's README file. For example:
+         https://github.com/editor-js/header#installation
+         -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script><!-- Header -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script><!-- Image -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@latest"></script><!-- Delimiter -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script><!-- List -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/checklist@latest"></script><!-- Checklist -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@latest"></script><!-- Quote -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/code@latest"></script><!-- Code -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script><!-- Embed -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/table@latest"></script><!-- Table -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/link@latest"></script><!-- Link -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/warning@latest"></script><!-- Warning -->
+
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@latest"></script><!-- Marker -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/inline-code@latest"></script><!-- Inline Code -->
+
+        <script src="js/editor.js"></script>
+
+
+        <!-- Initialize editor.js -->
+        <script>
+
+
+    //    
+    AJAX_GET('server.php', {'postID' : 4}, loadPost, '');
+
+
+    function loadPost(result){
+      result = JSON.parse(result);
+      var content = result[0];
+      content = JSON.parse(content);
+      var arr = content.split("}}");
+      var date = result[1];
+      var title = result[2];
+      $('#title').text(title);
+      $('#date').text("Last Updated : " + date);
+      console.log(result);
+      console.log(content);
+      //console.log(arr[0].concat('}}'));
+      console.log(arr);
+      for(var i = 0; i < arr.length; i++){
+        if(i >= 1){
+          arr[i] = arr[i].replace(',', '');
+        }
+
+        arr[i] = arr[i].concat('}}');
+
+      //  console.log(arr[i]);
+      }
+      console.log(arr.pop());
+      console.log(arr);
+      console.log(arr[arr.length-1]);
+
+
+      /*for(var i in content){
+
+        console.log(content[i]);
+      }*/
+      var editor = new EditorJS({
+          /**
+           * Create a holder for the Editor and pass its ID
+           */
+          holder : 'editorjs',
+
+          /**
+           * Common Inline Toolbar settings
+           * - if true (or not specified), the order from 'tool' property will be used
+           * - if an array of tool names, this order will be used
+           */
+          // inlineToolbar: ['link', 'marker', 'bold', 'italic'],
+          // inlineToolbar: true,
+
+
+          /**
+           * Available Tools list.
+           * Pass Tool's class or Settings object for each Tool you want to use
+           */
+           tools: {
+             /**
+              * Each Tool is a Plugin. Pass them via 'class' option with necessary settings {@link docs/tools.md}
+              */
+             header: {
+               class: Header,
+               config: {
+                 placeholder: 'Enter a header',
+                 levels: [2, 3, 4],
+                 defaultLevel: 3
+               }
+
+             },
+
+             /**
+              * Or pass class directly without any configuration
+              */
+              image: {
+             class: SimpleImage,
+
+           },
+
+             list: {
+               class: List,
+               inlineToolbar: true,
+               shortcut: 'CMD+SHIFT+L'
+             },
+
+             checklist: {
+               class: Checklist,
+               inlineToolbar: true,
+             },
+
+             quote: {
+               class: Quote,
+               inlineToolbar: true,
+               config: {
+                 quotePlaceholder: 'Enter a quote',
+                 captionPlaceholder: 'Quote\'s author',
+               },
+               shortcut: 'CMD+SHIFT+O'
+             },
+
+             warning: Warning,
+
+             marker: {
+               class:  Marker,
+               shortcut: 'CMD+SHIFT+M'
+             },
+
+             code: {
+               class:  CodeTool,
+               shortcut: 'CMD+SHIFT+C'
+             },
+
+             delimiter: Delimiter,
+
+             inlineCode: {
+               class: InlineCode,
+               shortcut: 'CMD+SHIFT+C'
+             },
+
+             linkTool: LinkTool,
+
+             embed: Embed,
+
+             table: {
+               class: Table,
+               inlineToolbar: true,
+               shortcut: 'CMD+ALT+T'
+             },
+              // ...
+          },
+
+          /**
+           * Previously saved data that should be rendered
+           */
+          data: {
+
+             }
+      });
+
+
+
+
+    //editor is async load, using statement below to debug whether editor.js loads
+    editor.isReady
+      .then(() => {
+        console.log('Editor.js is ready to work!')
+          for (var i in arr){
+          editor.blocks.insert(JSON.parse(arr[i]).type, JSON.parse(arr[i]).data);
+          }
+          editor.readOnly.toggle();
+        //this.render();
+        /** Do anything you need after editor initialization */
+      })
+      .catch((reason) => {
+        console.log(`Editor.js initialization failed because of ${reason}`)
+      });
+
+
+
+}
+
+
+
+        </script>
+
     </body>
 </html>
