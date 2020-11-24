@@ -403,10 +403,31 @@ $('#uploadImages').on('click', function() {
 //binded to the submit button when user tries to submit to create/update a post
 function onSubmit(){
   console.log("submit button was clicked");
+
+  //set contents within the modal such as title and confirm message
   $('#modalTitle').empty();
   $('#modalTitle').append("TITLE: " + $('#subj').val());
-
   $('#Modal').modal('show');
+
+  //change the button event and color located in the modal
+  $("#post").attr("onclick","makePost()");
+  $("#post").removeClass('btn-danger');
+  $("#post").addClass('btn-primary');
+}
+
+function onDelete(){
+  console.log('delete button was pressed');
+  //set contents within the modal such as title and confirm message
+  $('#modalTitle').empty();
+  $('#modalTitle').append("TITLE: " + $('#subj').val());
+  $('#Modal').modal('show');
+  $('#modalBody').html('<p> Are You sure you want to delete this post?');
+
+  //change the button event and color located in the modal
+  $("#post").attr("onclick","deletePost()");
+  $("#post").removeClass('btn-primary');
+  $("#post").addClass('btn-danger');
+
 }
 
 //sequence of events after user closes the modal
@@ -445,6 +466,8 @@ editor.save().then((outputData) => {
       success: function(php_script_response){
           $('#post').prop('disabled', true);
           console.log(php_script_response);
+          //if post is successfull, reload main menu
+          mainMenu();
           $('#modalBody').html("<h1>" + php_script_response + "</h1>");
       }
    });
@@ -453,6 +476,39 @@ editor.save().then((outputData) => {
   console.log('Saving failed: ', error);
 });
 }
+
+
+//function to send POST request to delete a Post
+function deletePost(){
+//Perform AJAX call to server.php and pass post id variable
+var form_data = new FormData();
+
+//if posts already exists and has an id set to the hidden input, append to POST
+if(!$('#id').val().length < 1){
+  form_data.append('id', $('#id').val());
+  form_data.append('del', 1);
+//send AJAX call
+$.ajax({
+    url: 'server.php', // point to server-side PHP script
+    dataType: 'text',  // what to expect back from the PHP script, if anything
+    cache: false,
+    contentType: false,
+    processData: false,
+    data: form_data,
+    type: 'post',
+    success: function(php_script_response){
+        $('#post').prop('disabled', true);
+        console.log(php_script_response);
+        //when success display result and reload mainmenu
+        mainMenu();
+        $('#modalBody').html("<h1>" + php_script_response + "</h1>");
+    }
+ });
+}else{
+  console.log('id of post does not exist or is not set');
+}
+}
+
 
 //initializes editor
 //create new Posts
@@ -502,7 +558,7 @@ posts = result[1];
 //store editing feature to a variable for later use
 var globe = null;
 var posts;
-var del = '<div><button id="deletePost" class="btn btn-block btn-danger">Delete</button></div>'
+var del = '<div><button id="deletePost" class="mt-4 btn btn-block btn-danger" onclick="onDelete()">Delete</button></div>'
 console.log(globe);
 //create button object and append to main div
 var choices = '<div class="text-center" id="choice" ><button class="btn btn-primary" onclick="create()">Create New Post</button><button class="btn btn-success" onclick="view()">View Posts</button>';
@@ -517,6 +573,7 @@ if(globe == null){
 globe = $('#mainCreate').detach();
 }
 
+//removes delete button
 if($('#deletePost').length){
   $('#deletePost').remove();
 }
@@ -538,6 +595,7 @@ function loadPost(id){
     $('#subj').val(posts[id].title);
     $('#id').val(id);
 
+    //add the delete button to div
     $('#submit').after(del);
 
     //configure blocks

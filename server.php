@@ -16,23 +16,34 @@ if(isset($_POST['content']) && isset($_POST['subj']) && isset($_POST['date'])){
 
 
      $arr = json_encode($_POST['content']);
+     //if if ID of Post was also sent through POST must perform update of existing post
+     $subject = htmlspecialchars( $_POST['subj']);
      if(isset($_POST['id'])){
-       updatePost($db, $_POST['subj'], $arr, date('Y-m-d'), $_POST['id']);
+       updatePost($db, $subject, $arr, date('Y-m-d'), $_POST['id']);
      }else{
-       insertPost($db, $_POST['subj'], $arr, date('Y-m-d'));
+       //if no ID was sent, insert new post
+       insertPost($db, $subject, $arr, date('Y-m-d'));
       }
-
+    //GET for postID was sent, then return content of post
    }elseif(isset($_GET['postID'])){
 
-        getPost($db, $_GET['postID']);
-
+        getPost($db, htmlspecialchars($_GET['postID']));
+  //if GET action is set, get All Posts
 } else if(isset($_GET['action'])){
   if($_GET['action'] == 1){
     getAllPosts($db);
-
+  }else{
+    echo 'Action was not recognized';
   }
 
+} else if(isset($_POST['id']) && isset($_POST['del'])){
+    if($_POST['del'] == 1){
+      deletePost($db, htmlspecialchars($_POST['id']));
+    }else{
+      echo 'Action was not recognized';
+    }
 }else{
+   echo 'Action was not recognized -- END';
 
 }
 
@@ -179,6 +190,28 @@ function updatePost($db, $title, $body, $date, $id){
     echo "<h2>ERROR: " . $db->error . "for query</h2>"; // error statement
   }else{
     echo "<h2>Post was updated Successfully!</h2>"; //print if entry is sucess!
+
+    $stmt->close();
+  }
+}
+
+//delete post using ID
+function deletePost($db, $id){
+  /////////////////////////////////////////////
+
+  $insert = "DELETE FROM  Posts WHERE PostID = ?";
+  $stmt = $db->stmt_init();
+  $stmt->prepare($insert);
+  //bind
+  $stmt->bind_param('i', $id);
+  $sucess = $stmt->execute();
+
+
+  //check to see if DB insert was successful if not print DB error
+  if(!$sucess || $db->affected_rows == 0){
+    echo "<h2>ERROR: " . $db->error . "for query</h2>"; // error statement
+  }else{
+    echo "<h2>Post has been Deleted.</h2>"; //print if entry is sucess!
 
     $stmt->close();
   }
