@@ -11,22 +11,30 @@ require_once('mysql.inc.php');
       echo "<h5>ERROR: " . mysqli_connect_errno() . ": " . mysqli_connect_error() . " </h5><br>";
     }
 
+//if content, sunj, and date are set with POST: perform insertion of Posts
 if(isset($_POST['content']) && isset($_POST['subj']) && isset($_POST['date'])){
 
 
      $arr = json_encode($_POST['content']);
-     insertPost($db, $_POST['subj'], $arr, date('Y-m-d'));
-
+     if(isset($_POST['id'])){
+       updatePost($db, $_POST['subj'], $arr, date('Y-m-d'), $_POST['id']);
+     }else{
+       insertPost($db, $_POST['subj'], $arr, date('Y-m-d'));
+      }
 
    }elseif(isset($_GET['postID'])){
 
         getPost($db, $_GET['postID']);
 
+} else if(isset($_GET['action'])){
+  if($_GET['action'] == 1){
+    getAllPosts($db);
+
+  }
+
 }else{
 
-  echo 'no action done';
 }
-
 
 
 
@@ -154,6 +162,32 @@ function insertPost($db, $title, $body, $date){
   }
 }
 
+//update post using ID
+function updatePost($db, $title, $body, $date, $id){
+  /////////////////////////////////////////////
+
+  $insert = "UPDATE Posts SET Title = ?, Content = ?, DateCreated = ? WHERE PostID = ?";
+  $stmt = $db->stmt_init();
+  $stmt->prepare($insert);
+  //bind
+  $stmt->bind_param('sssi', $title, $body, $date, $id);
+  $sucess = $stmt->execute();
+
+
+  //check to see if DB insert was successful if not print DB error
+  if(!$sucess || $db->affected_rows == 0){
+    echo "<h2>ERROR: " . $db->error . "for query</h2>"; // error statement
+  }else{
+    echo "<h2>Post was updated Successfully!</h2>"; //print if entry is sucess!
+
+    $stmt->close();
+  }
+}
+
+
+
+
+
 //function to get specific post and comments
 function getPost($db, $postID){
   $content = '';
@@ -184,6 +218,42 @@ function getPost($db, $postID){
           echo json_encode($arr);
 
         }
+        $stmt->close();
+  }
+}
+
+//function to get all posts from DB
+function getAllPosts($db){
+  $content = '';
+  $date = '';
+  $title = '';
+  $id = '';
+  $posts = [];
+
+    $query = "SELECT * FROM Posts";
+    $stmt = $db->stmt_init();
+    $stmt->prepare($query);
+    //bind
+    //$stmt->bind_param('i', $postID);
+    $sucess = $stmt->execute();
+    //check to see if DB insert was successful if not print DB error
+    if(!$sucess || $db->affected_rows == 0){
+      echo "ERROR: " . $db->error . " for query"; // error statement
+      //echo "username does not exists in DB";
+    //  echo 0;
+    }else{
+        $stmt->bind_result($id, $title, $content, $date);
+        $cards = '';
+        while($stmt->fetch()){
+          //$content = json_decode($content);
+          $content = str_replace('[', '', $content);
+          $content = str_replace(']', '', $content);
+          $posts[$id] = array('title' => $title, 'content' => $content, 'date' => $date);
+          $cards .= '<div class="card"> <div class="card-body"><h5 class="card-title">' . $id . '. ' . $title . '</h5><p class="card-text">' . $date .'</p><button onclick="loadPost(' . $id . ')" class="btn btn-secondary">View</button></div></div>';
+
+        }
+        $send = array($cards, $posts);
+        echo json_encode($send);
         $stmt->close();
   }
 }

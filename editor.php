@@ -22,6 +22,8 @@ if(isset($_POST['submit'])){
         <!-- main css -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
+        <link href="https://getbootstrap.com/docs/4.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
         <!-- Include stylesheet -->
     </head>
 <body>
@@ -86,11 +88,14 @@ if(isset($_POST['submit'])){
     <section style="margin-top:5vh;" >
     <?php echo file_get_contents("modal.html"); ?>
         <!-- Create the editor container -->
-
-<div class="container">
+<button id="back" class="float-left btn btn-dark" onclick=mainMenu()>Go back </button><br><br>
+<div id="main" class="mb-4">
+<div id="mainCreate">
+<div  class="container">
 <h5>Title: <h5S>
 <input class="form-control-xlg" type="text" id="subj" name="subj" required minlength="5" maxlength="80" style="width:100%;"><br><br>
 <label>Date Today: &nbsp;</label><input type="text" name="date" id="date" required value="<?php echo date('F', strtotime("2000-" .date("m") . "-01")) . " " . date("d, Y");?>" />
+<input class="form-control" type="hidden" id="id" name="id">
 </br>
 
 <div id="imagePath">
@@ -106,9 +111,16 @@ if(isset($_POST['submit'])){
 <!--end -->
 <textarea name="text" style="display:none" id="textBox" name="textBox"></textarea>
 <div class="container">
-<button id="submit" class="btn btn-lg btn-block btn-primary mt-3">Submit</button>
+<button id="submit" class="btn btn-lg btn-block btn-primary mt-3" onclick="onSubmit()">Submit</button>
 </div>
 
+</div>
+</div>
+<div id="spinner" class="text-center">
+  <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+  </div>
+</div>
 
 <!-- Load Tools -->
 <!--
@@ -258,7 +270,7 @@ editor.isReady
 
     <!--================ Start footer Area  =================-->
     <footer>
-        <div class="footer-area">
+        <div class="footer-area text-light">
             <div class="container">
                 <div class="row section_gap">
                     <div class="col-lg-3 col-md-6 col-sm-6">
@@ -388,10 +400,20 @@ $('#uploadImages').on('click', function() {
      });
 });
 
-$("#submit").on("click", function(){
+//binded to the submit button when user tries to submit to create/update a post
+function onSubmit(){
   console.log("submit button was clicked");
-  $('#modalTitle').append($('#subj').val());
+  $('#modalTitle').empty();
+  $('#modalTitle').append("TITLE: " + $('#subj').val());
+
   $('#Modal').modal('show');
+}
+
+//sequence of events after user closes the modal
+$('#Modal').on('hidden.bs.modal', function () {
+    //enable post button on modal & clear text
+    $('#post').prop('disabled', false);
+    $('#modalBody').html('<p> Are You sure you want to submit this post? Make sure to double check!');
 });
 
 
@@ -404,6 +426,11 @@ editor.save().then((outputData) => {
 
   //Perform AJAX call to server.php and pass variables to interval
   var form_data = new FormData();
+  //if posts already exists and has an id set to the hidden input, append to POST
+  if(!$('#id').val().length < 1){
+    form_data.append('id', $('#id').val());
+  }
+
   form_data.append('subj', $('#subj').val());
   form_data.append('date', $('#date').val());
   form_data.append('content', JSON.stringify(outputData.blocks));
@@ -427,8 +454,115 @@ editor.save().then((outputData) => {
 });
 }
 
+//initializes editor
+//create new Posts
+function create(){
+  console.log('Create button pressed');
+  //load main editor div
+  $('#main').html(globe);
+  //show the back button
+  $('#back').show();
+  //clear all content from posts in case view() was called beforehand
+  editor.blocks.clear();
+  $('#subj').val(''); //clear title input
+  $('#id').val(''); //clear id input
+}
+//grabs all posts via GET Ajax to see all views in DB
+function view(){
+  $('#spinner').show();
+  //load
+  $('#main').empty();
+  console.log('View button pressed');
+  //load main div with posts from DB
+  AJAX_GET('server.php', {'action' : '1'}, loadAll, '');
+
+}
+
+//result from AJAX call from view function, laod it onto main div
+function loadAll(result){
+// conver to json object
+result = JSON.parse(result);
+console.log(result);
+//console.log(posts[1][0].title);
+//hide spinner and show back button
+$('#spinner').hide();
+$('#back').show();
+//load this onto the div:
+if(result[0].length != 0){
+$('#main').append(result[0]);
+}else{
+$('#main').append("There are no saved posts");
+}
+//set the global function to posts for future use
+posts = result[1];
+
+}
+
+//shows main menu
+//store editing feature to a variable for later use
+var globe = null;
+var posts;
+var del = '<div><button id="deletePost" class="btn btn-block btn-danger">Delete</button></div>'
+console.log(globe);
+//create button object and append to main div
+var choices = '<div class="text-center" id="choice" ><button class="btn btn-primary" onclick="create()">Create New Post</button><button class="btn btn-success" onclick="view()">View Posts</button>';
+
+//runs this function to show view and create buttons
+mainMenu();
 
 
+//loads two buttons for view and create
+function mainMenu(){
+if(globe == null){
+globe = $('#mainCreate').detach();
+}
+
+if($('#deletePost').length){
+  $('#deletePost').remove();
+}
+
+console.log("main menu called");
+$('#main').empty();
+$('#main').append(choices);
+//hide spinner and back button
+$('#spinner').hide();
+$('#back').hide();
+}
+
+
+function loadPost(id){
+    console.log('clicked on post #: ' + id);
+    $('#main').empty();
+    $('#main').append(globe);
+    console.log(posts);
+    $('#subj').val(posts[id].title);
+    $('#id').val(id);
+
+    $('#submit').after(del);
+
+    //configure blocks
+    posts[id].content = JSON.parse(posts[id].content);
+   var arr = posts[id].content.split("}}");
+    console.log(arr);
+    for(var i = 0; i < arr.length; i++){
+      if(i >= 1){
+        arr[i] = arr[i].replace(',', '');
+      }
+
+      arr[i] = arr[i].concat('}}');
+
+    //  console.log(arr[i]);
+    }
+
+    console.log(arr.pop());
+    //arr.splice(-1, 1);
+    console.log(arr[arr.length-1]);
+    console.log(arr);
+    editor.blocks.clear();
+    for (var i in arr){
+     editor.blocks.insert(JSON.parse(arr[i]).type, JSON.parse(arr[i]).data);
+    }
+}
 
 
 

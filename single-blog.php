@@ -490,9 +490,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <script>
 
 
-    //    
-    AJAX_GET('server.php', {'postID' : 4}, loadPost, '');
-
+    <?php
+    if(isset($_GET['postID'])){
+    $postID = $_GET['postID'];
+    echo 'AJAX_GET("server.php", {"postID" : ' . $postID . '}, loadPost, "");';
+    }
+    ?>
 
     function loadPost(result){
       result = JSON.parse(result);
