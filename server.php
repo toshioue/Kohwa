@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('mysql.inc.php');
 
 //Need to do some authentication first with sessions variable,
@@ -42,36 +43,29 @@ if(isset($_POST['content']) && isset($_POST['subj']) && isset($_POST['date'])){
     }else{
       echo 'Action was not recognized';
     }
+}else if(isset($_POST['submitLogin'])){
+  $user = htmlspecialchars($_POST['user']);
+  $pw = htmlspecialchars($_POST['pw']);
+  if(logon($db, $user, $pw, session_id())){
+    header('Location: editor.php');
+  }else{
+    header('Location: login.php?error_msg="Username or Password do not match."');
+  }
+
+
 }else{
-   echo 'Action was not recognized -- END';
+  echo 'Action was not recognized -- END';
 
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   //verifies if user can log on
   function logon($db, $username, $password, $sessionid) {
+  //  echo "hello " . $username . " password: " . $password;
     $query = "SELECT Password FROM Users WHERE Username =?";
     $query3 = "INSERT INTO Sessions (User, SessionID) VALUES (?, ?)";
-    $hash = '';
-
-
     $stmt = $db->stmt_init();
     $stmt->prepare($query);
-
     //bind
     $stmt->bind_param('s', $username);
     $sucess = $stmt->execute();
@@ -83,11 +77,13 @@ if(isset($_POST['content']) && isset($_POST['subj']) && isset($_POST['date'])){
       return False;
     }else{
         //check if returned hash is correct;
+        $hash = '';
         $stmt->bind_result($hash);
     while($stmt->fetch()){
+
       //echo $hash . "\n";
       //echo password_hash($password, PASSWORD_DEFAULT);
-          //check if passwords match
+    //check if passwords match
     if(password_verify($password, $hash)){
 
       $stmt->close();
@@ -99,13 +95,16 @@ if(isset($_POST['content']) && isset($_POST['subj']) && isset($_POST['date'])){
         //  echo "ERROR: " . $db->error . " for query*"; // error statement
           return False;
         }
-     //echo "It worked, looged in";
+    // echo "It worked, looged in";
      $stmt->close();
      return True;
-    }else
-    //  echo "password did not match";
-      return False;
+  }else{
+    // echo "password did not match";
+    return False;
+   }
     }
+
+
       }
   }
 
@@ -290,6 +289,34 @@ function getAllPosts($db){
         $stmt->close();
   }
 }
+
+
+function verify($db, $sessionid){
+
+  $query = "SELECT User from Sessions where SessionID = ?";
+  //$query2 = "UPDATE auth_user set lastlogin = NOW() WHERE user=?";
+
+    $stmt = $db->stmt_init();
+    $stmt->prepare($query);
+
+
+    //bind
+    $stmt->bind_param('s', $sessionid);
+    $sucess = $stmt->execute();
+    if(!$sucess || $db->affected_rows == 0){
+      echo "ERROR: " . $db->error . " for query"; // error statement
+      //echo "<h3>username does not exists in DB</h3>";
+      return '';
+    }
+    //bind the user to $user variable
+    $stmt->bind_result($user);
+    //fetch data to the last row --not sure if neccessary--
+   while($stmt->fetch()) { }
+
+
+     return $user;
+  }
+
 
 
 

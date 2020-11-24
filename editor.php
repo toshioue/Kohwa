@@ -1,8 +1,6 @@
 <?php
-if(isset($_POST['submit'])){
+session_start();
 
-   var_dump($_POST);
-}
  ?>
 <!doctype html>
 <html lang="en">
