@@ -1,7 +1,28 @@
 <?php
 session_start();
+require_once('mysql.inc.php');
+include 'functions.php';
 
- ?>
+//connect to DB if session match and user is authenticated
+//connect to database
+  $db = new myConnectDB();          # Connect to MySQL
+  //check if connecting to DB draws error
+  if (mysqli_connect_errno()) {
+      echo "<h5>ERROR: " . mysqli_connect_errno() . ": " . mysqli_connect_error() . " </h5><br>";
+    }
+
+
+
+  if (!isset($_SESSION['user']) && !verify($db, session_id())){
+    $db->close();
+    header('Location: index.html');
+  }
+
+
+
+
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -86,7 +107,7 @@ session_start();
     <section style="margin-top:5vh;" >
     <?php echo file_get_contents("modal.html"); ?>
         <!-- Create the editor container -->
-<button id="back" class="float-left btn btn-dark" onclick=mainMenu()>Go back </button><br><br>
+<button id="back" class="float-left btn btn-warning" onclick=mainMenu()>Go back </button><br><br>
 <div id="main" class="mb-4">
 <div id="mainCreate">
 <div  class="container">
@@ -94,12 +115,17 @@ session_start();
 <input class="form-control-xlg" type="text" id="subj" name="subj" required minlength="5" maxlength="80" style="width:100%;"><br><br>
 <label>Date Today: &nbsp;</label><input type="text" name="date" id="date" required value="<?php echo date('F', strtotime("2000-" .date("m") . "-01")) . " " . date("d, Y");?>" />
 <input class="form-control" type="hidden" id="id" name="id">
-</br>
-
+</br><hr>
+<div id="thumbnailPath">
+  <label for="files">Select an image that will be used as a thumbnail post</label>
+  <input type="file" id="timages" name="timages">  <br>
+  <button class="btn btn-dark" id="uploadThumb">Upload</button>
+</div>
+  <br><br><hr>
 <div id="imagePath">
   <label for="files">Select images that will be used in the Post:</label>
   <input type="file" id="images" name="images">  <br>
-  <button id="uploadImages">Upload</button>
+  <button class="btn btn-dark"  id="uploadImages">Upload</button>
 </div>
   <br><br>
 <br>
@@ -343,7 +369,7 @@ editor.isReady
                 <div class="row d-flex">
                     <p class="col-lg-12 footer-text text-center">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | KOHWA
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                 </div>
             </div>
@@ -397,6 +423,32 @@ $('#uploadImages').on('click', function() {
         }
      });
 });
+
+//for uploading images to the server and using them to make a post.
+$('#uploadThumb').on('click', function() {
+    console.log($('#timages').prop('files'));
+    var file_data = $('#timages').prop('files')[0];
+    var form_data = new FormData();
+    form_data.append('file', file_data);
+    console.log(form_data);
+    $.ajax({
+        url: 'uploadFile.php', // point to server-side PHP script
+        dataType: 'text',  // what to expect back from the PHP script, if anything
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        type: 'post',
+        success: function(php_script_response){
+            //alert(php_script_response); // display response from the PHP script, if any
+            $('#thumbnailPath').html('<br><input type="text" value=' + php_script_response + " />" + '<img id="thumbnailPic" src="' + php_script_response +'" alt="..." class="img-thumbnail">');
+        }
+     });
+});
+
+
+
+
 
 //binded to the submit button when user tries to submit to create/update a post
 function onSubmit(){
@@ -453,6 +505,10 @@ editor.save().then((outputData) => {
   form_data.append('subj', $('#subj').val());
   form_data.append('date', $('#date').val());
   form_data.append('content', JSON.stringify(outputData.blocks));
+  //if user uploads a a thumbnail picture, then append src of thumbnail to the form for upload
+  if($('#thumbnailPic').length != 0){
+    form_data.append('thumbnail', $('#thumbnailPic').attr('src'));
+  }
   $.ajax({
       url: 'server.php', // point to server-side PHP script
       dataType: 'text',  // what to expect back from the PHP script, if anything
@@ -556,10 +612,12 @@ posts = result[1];
 //store editing feature to a variable for later use
 var globe = null;
 var posts;
-var del = '<div><button id="deletePost" class="mt-4 btn btn-block btn-danger" onclick="onDelete()">Delete</button></div>'
+var del = '<div><button id="deletePost" class="mt-4 btn btn-block btn-danger" onclick="onDelete()">Delete</button>';
+
 console.log(globe);
 //create button object and append to main div
-var choices = '<div class="text-center" id="choice" ><button class="btn btn-primary" onclick="create()">Create New Post</button><button class="btn btn-success" onclick="view()">View Posts</button>';
+var choices = '<div class="text-center" id="choice" ><button class="btn btn-primary" onclick="create()">Create New Post</button><button class="btn btn-success" onclick="view()">View Posts</button><br><br>';
+choices += '<form action="server.php" method="POST"><div class="form-group"><input type="submit" class="btn btn-warning" name="logOut" id="logOut" value="Sign out"></div></form>';
 
 //runs this function to show view and create buttons
 mainMenu();
@@ -567,6 +625,7 @@ mainMenu();
 
 //loads two buttons for view and create
 function mainMenu(){
+
 if(globe == null){
 globe = $('#mainCreate').detach();
 }
@@ -582,6 +641,7 @@ $('#main').append(choices);
 //hide spinner and back button
 $('#spinner').hide();
 $('#back').hide();
+
 }
 
 
@@ -625,4 +685,7 @@ function loadPost(id){
 
        </script>
     </body>
+
+
+
 </html>

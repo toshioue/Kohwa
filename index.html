@@ -81,8 +81,19 @@
 					<p style="font-size: 25px;">
 						"Pride and Respect for our islands' bounties and culture"
 					</p>
-				<!--	<a class="primary_btn mr-20" href="#">Donate Now</a>-->
-					<a class="primary_btn yellow_btn text-white" href="causes.html">See Causes</a>
+          <!---->
+          <div class="row justify-content-center">
+
+          <form action="https://www.paypal.com/donate" method="post" target="_top">
+<input type="hidden" name="business" value="2DJMD32DSLEFU" />
+<input type="hidden" name="item_name" value="Koupwelihki Oh Wauneki Atail-sohso" />
+<input type="hidden" name="currency_code" value="USD" />
+<input type="submit" class="primary_btn mr-18" value="Donate Now" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<!--<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />-->
+</form>
+        <!---->
+				<a class="primary_btn yellow_btn text-white ml-3" href="causes.html">See Causes</a>
+        </div>
 				</div>
 			</div>
 		</div>
@@ -587,7 +598,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
+			<div id="BlogThree" class="row">
 				<!-- single-story -->
 				<div class="col-lg-4 col-md-6">
 					<div class="single-story">
@@ -602,7 +613,7 @@
 								</a>
 								<a href="#">
 									<span class="lnr lnr-book"></span>
-									Company
+									Admin
 								</a>
 							</div>
 							<h5>
@@ -629,7 +640,7 @@
 								</a>
 								<a href="#">
 									<span class="lnr lnr-book"></span>
-									Company
+									Admin
 								</a>
 							</div>
 							<h5>
@@ -656,7 +667,7 @@
 								</a>
 								<a href="#">
 									<span class="lnr lnr-book"></span>
-									Company
+									Admin
 								</a>
 							</div>
 							<h5>
@@ -809,7 +820,7 @@
 				<div class="row d-flex">
 					<p class="col-lg-12 footer-text text-center">
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | KOHWA <!-- This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>-->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | KOHWA | <small>This modified template is made with by <a href="https://colorlib.com" target="_blank">Colorlib</a><small> 
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 				</div>
 			</div>
@@ -833,5 +844,26 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="js/gmaps.min.js"></script>
 	<script src="js/theme.js"></script>
+  <script src="js/ajax.js"></script>
+  <script>
+  //load main div with posts from DB
+  AJAX_GET('server.php', {'action' : '2'}, loadThree, '');
+
+  //function will set Posts in the home Page Section
+  function loadThree(result){
+    //load 3 most recent posts in homepage
+    result = JSON.parse(result);
+    console.log(result[0]);
+
+    if(result[0]){
+      $('#BlogThree').html(result[0])
+    }else{
+      $('#BlogThree').html('<div class="text-center col-lg-12"><p class="lead">Sorry, there are no posts at this time.</p></div>');
+    }
+
+  }
+
+  </script>
+
 </body>
 </html>

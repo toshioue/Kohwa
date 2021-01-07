@@ -2831,6 +2831,7 @@ background-repeat: no-repeat;}
 .bg-five {background-image: url(http://www.travelandleisure.com/sites/default/files/styles/tnl_redesign_article_landing_page/public/1453920892/DUBAI-554088081-ABOVE0116.jpg?itok=dcoZnCrc);}
 .bg-six {background-image: url(http://blog.whitepages.com/wp-content/uploads/2015/04/san-franc.jpg);}
 
+.bg-blue {background-color: #00e0e0;}
 
 .wrapper a {
     display: none;
@@ -2902,6 +2903,44 @@ background-repeat: no-repeat;}
 }
 
 /*Custom Added CSS */
+.fa_2 {
+  padding: 2px !important;
+  font-size: 50px !important;
+  width: 100px !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  margin: 5px 2px !important;
+}
+
+.fa_2:hover {
+    opacity: 0.7 !important;
+}
+
+ #fa {
+  background: #3B5998 !important;
+  color: white !important;
+}
+
+#in {
+  background: #125688 !important;
+  color: white !important;
+}
+
+.img-same {
+    float: left;
+    max-width: 100%;
+    height: 315px;
+    object-fit: cover;
+}
+
+.img-fluid:hover{
+  opacity: 0.8 !important;
+}
+
+
+
+
+
 
 
 

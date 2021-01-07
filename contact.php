@@ -145,50 +145,46 @@ if (mail($to, $subject, $body, $headers))
                 data-mlon="-74.1522848">
             </div>-->
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4 border">
                     <div class="contact_info">
                         <div class="info_item">
                             <i class="lnr lnr-home"></i>
                             <h6>Pohnpei, Federated States of Micronesia</h6>
                             <p>Nett, 96941</p>
                         </div>
-                        <div class="info_item">
-                            <i class="lnr lnr-phone-handset"></i>
-                            <h6><a href="#">(+691) 925 6969</a></h6>
-                            <p>Mon to Fri 9am to 6 pm</p>
-                        </div>
-                        <div class="info_item">
-                            <i class="lnr lnr-envelope"></i>
-                            <h6><a href="#">kohwa-fsm@gmail.com</a></h6>
-                            <p>Send us your query anytime!</p>
-                        </div>
                     </div>
                 </div>
-                <div class="col-lg-9" style="background-color: #0fabbc; padding-top: 30px; padding-bottom: 20px;">
-                    <form class="row contact_form" action="contact.php" method="POST"  novalidate="novalidate"> <!-- use id="contactForm"-->
-                        <div class="col-md-6">
-                            <div class="form-group border border-success ">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
-                            </div>
-                            <div class="form-group border border-success">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
-                            </div>
-                            <div class="form-group border border-success">
-                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Enter Message"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-12 text-right">
-                            <input type="submit" value="submit" name="submit" class="btn primary_btn" style=" background-color: #28a745; ">
-                        </div>
-                    </form>
+                <div class="col-lg-4 border">
+                <div class="contact_info">
+                  <div class="info_item">
+                      <i class="lnr lnr-phone-handset"></i>
+                      <h6><a href="#">(+691) 925 6969</a></h6>
+                      <p>Mon to Fri 9am to 6 pm</p>
+                  </div>
+                  </div>
+
                 </div>
-            </div>
+
+                <div class="col-lg-4 border">
+                <div class="contact_info">
+                  <div class="info_item">
+                      <i class="lnr lnr-envelope"></i>
+                      <h6><a href="#">kohwa-fsm@gmail.com</a></h6>
+                      <p>Send us your query anytime!</p>
+                  </div>
+                  </div>
+
+                </div>
         </div>
+        <div class="text-center"><h3>Follow Us on Social Media!</h1></hr></div>
+        <div class="row text-center">
+          <div class="col-lg-6">
+            <a id="fa" href="#" class="fa fa_2 fa-facebook"></a>
+        </div>
+        <div class="col-lg-6">
+          <a id="in" href="#" class="fa fa_2 fa-instagram"></a></div>
+      </div>
+
     </section>
     <!--================Contact Area =================-->
 
@@ -292,46 +288,13 @@ if (mail($to, $subject, $body, $headers))
                 <div class="row d-flex">
                     <p class="col-lg-12 footer-text text-center">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | KOHWA
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                 </div>
             </div>
         </div>
     </footer>
     <!--================ End footer Area  =================-->
-
-    <!--================Contact Success and Error message Area =================-->
-    <div id="success"  class="modal modal-message fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <i class="fa fa-close"></i>
-                    </button>
-                    <h2>Thank you</h2>
-                    <p>Your message is successfully sent...</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Modals error -->
-    <div id="error" class="modal modal-message fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <i class="fa fa-close"></i>
-                    </button>
-                    <h2>Sorry !</h2>
-                    <p> Something went wrong </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--================End Contact Success and Error message Area =================-->
-
 
 
         <!-- Optional JavaScript -->

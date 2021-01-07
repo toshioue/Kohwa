@@ -10,7 +10,7 @@ if(isset($_FILES['file'])){
    else {
        if(move_uploaded_file($_FILES['file']['tmp_name'], 'img/posts/' . $_FILES['file']['name'])){
 
-         echo 'http://192.168.1.8/KOHWA/img/posts/' . $_FILES['file']['name'];
+         echo 'http://192.168.43.205/KOHWA/img/posts/' . $_FILES['file']['name'];
      }else{
        echo "failed to upload";
      }
