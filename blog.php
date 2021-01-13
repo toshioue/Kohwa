@@ -457,8 +457,8 @@
                             <div class="single-footer-widget tp_widgets">
                                 <h4 class="footer_title large_title">Our Mission</h4>
                                 <p>
-                                  "We work with communites to improve sustainable practices and promote environmental stewardship through
-                                    alternative livelihoods and community education on health, environment, and cultural heritage in Pohnpei."
+                                  We work with communites to improve sustainable practices and promote environmental stewardship through
+                                    alternative livelihoods and community education on health, environment, and cultural heritage in Pohnpei.
                   							</p>
                             </div>
                         </div>
@@ -471,6 +471,7 @@
                                   <li><a href="causes.html">Causes</a></li>
                                   <li><a href="blog.html">Press Release</a></li>
                                   <li><a href="contact.php">Contact</a></li>
+                                  <li><a href="login.php">Login</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -500,18 +501,17 @@
                                         Phone Number
                                     </p>
                                     <p>
-                                        +123 456 7890 <br>
-                                        +123 456 7890
-                                    </p>
+                                      (691) 921-4522
+                    								</p>
 
-                                    <p class="sm-head">
-                                        <span class="fa fa-envelope"></span>
-                                        Email
-                                    </p>
-                                    <p>
-                                        free@infoexample.com <br>
-                                        www.infoexample.com
-                                    </p>
+                    								<p class="sm-head">
+                    									<span class="fa fa-envelope"></span>
+                    									Email
+                    								</p>
+                    								<p>
+                                      kohwa-fsm@gmail.com <br>
+                                      www.kohwa-fsm.org
+                    								</p>
                                 </div>
                             </div>
                         </div>
@@ -524,7 +524,7 @@
                     <div class="row d-flex">
                         <p class="col-lg-12 footer-text text-center">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | KOHWA | template by <a href="https://colorlib.com" target="_blank">Colorlib</a> | developed by <a href="https://github.com/toshioue" target="_blank">toshioue</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                     </div>
                 </div>

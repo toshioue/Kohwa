@@ -149,8 +149,8 @@ if (mail($to, $subject, $body, $headers))
                     <div class="contact_info">
                         <div class="info_item">
                             <i class="lnr lnr-home"></i>
-                            <h6>Pohnpei, Federated States of Micronesia</h6>
-                            <p>Nett, 96941</p>
+                            <h6>Kolonia, Pohnpei, 96941</h6>
+                            <p>Federated States of Micronesia</p>
                         </div>
                     </div>
                 </div>
@@ -158,7 +158,7 @@ if (mail($to, $subject, $body, $headers))
                 <div class="contact_info">
                   <div class="info_item">
                       <i class="lnr lnr-phone-handset"></i>
-                      <h6><a href="#">(+691) 925 6969</a></h6>
+                      <h6><a href="#">(691) 921-4522</a></h6>
                       <p>Mon to Fri 9am to 6 pm</p>
                   </div>
                   </div>
@@ -273,8 +273,7 @@ if (mail($to, $subject, $body, $headers))
                                     Phone Number
                                 </p>
                                 <p>
-                                    +123 456 7890 <br>
-                                    +123 456 7890
+                                     (691) 921-4522
                                 </p>
 
                                 <p class="sm-head">
@@ -282,8 +281,8 @@ if (mail($to, $subject, $body, $headers))
                                     Email
                                 </p>
                                 <p>
-                                    free@infoexample.com <br>
-                                    www.infoexample.com
+                                    kohwa-fsm@gmail.com <br>
+                                    www.kohwa-fsm.org
                                 </p>
                             </div>
                         </div>

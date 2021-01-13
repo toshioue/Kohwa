@@ -44,7 +44,7 @@
                                     <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
                                     <li class="nav-item"><a class="nav-link" href="causes.html">Causes</a>
                                     <li class="nav-item active"><a class="nav-link" href="blog.php">Press Release</a>
-                                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -83,13 +83,10 @@
                     <div class="row section_gap">
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="single-footer-widget tp_widgets">
-                                <h4 class="footer_title large_title">Our Mission</h4>
-                                <p>
-                                    So seed seed green that winged cattle in. Gathering thing made fly you're no
-                                    divided deep moved us lan Gathering thing us land years living.
-                                </p>
-                                <p>
-                                    So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved
+                                <h4 class="footer_title large_title ">Our Mission</h4>
+                                <p class="text-secondary">
+                                  We work with communites to improve sustainable practices and promote environmental stewardship through
+                                    alternative livelihoods and community education on health, environment, and cultural heritage in Pohnpei.
                                 </p>
                             </div>
                         </div>
@@ -97,12 +94,12 @@
                             <div class="single-footer-widget tp_widgets">
                                 <h4 class="footer_title">Quick Links</h4>
                                 <ul class="list">
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Causes</a></li>
-                                    <li><a href="#">Event</a></li>
-                                    <li><a href="#">News</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                  <li><a href="index.html">Home</a></li>
+                                  <li><a href="about-us.html">About</a></li>
+                                  <li><a href="causes.html">Causes</a></li>
+                                  <li><a href="blog.php">Press Release</a></li>
+                                  <li><a href="contact.php">Contact</a></li>
+                                  <li><a href="login.php">Login</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -112,42 +109,37 @@
                                 <ul class="list instafeed d-flex flex-wrap">
                                     <li><img src="img/gallery/g1.jpg" alt=""></li>
                                     <li><img src="img/gallery/g2.jpg" alt=""></li>
-                                    <li><img src="img/gallery/g3.jpg" alt=""></li>
-                                    <li><img src="img/gallery/g4.jpg" alt=""></li>
-                                    <li><img src="img/gallery/g5.jpg" alt=""></li>
-                                    <li><img src="img/gallery/g6.jpg" alt=""></li>
-                                </ul>
+                               </ul>
                             </div>
                         </div>
                         <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
-                            <div class="single-footer-widget tp_widgets">
-                                <h4 class="footer_title">Contact Us</h4>
-                                <div class="ml-40">
-                                    <p class="sm-head">
-                                        <span class="fa fa-location-arrow"></span>
-                                        Head Office
-                                    </p>
-                                    <p>123, Main Street, Your City</p>
+                          <div class="single-footer-widget tp_widgets text-secondary">
+                              <h4 class="footer_title">Contact Us</h4>
+                              <div class="ml-40">
+                                  <p class="sm-head">
+                                      <span class="fa fa-location-arrow"></span>
+                                      Head Office
+                                  </p>
+                                  <p>Kolonia, Pohnpei Federated States of Micronesia 96941</p>
 
-                                    <p class="sm-head">
-                                        <span class="fa fa-phone"></span>
-                                        Phone Number
-                                    </p>
-                                    <p>
-                                        +123 456 7890 <br>
-                                        +123 456 7890
-                                    </p>
+                                  <p class="sm-head">
+                                      <span class="fa fa-phone"></span>
+                                      Phone Number
+                                  </p>
+                                  <p>
+                                    (691) 921-4522
+                                  </p>
 
-                                    <p class="sm-head">
-                                        <span class="fa fa-envelope"></span>
-                                        Email
-                                    </p>
-                                    <p>
-                                        free@infoexample.com <br>
-                                        www.infoexample.com
-                                    </p>
-                                </div>
-                            </div>
+                                  <p class="sm-head">
+                                    <span class="fa fa-envelope"></span>
+                                    Email
+                                  </p>
+                                  <p>
+                                    kohwa-fsm@gmail.com <br>
+                                    www.kohwa-fsm.org
+                                  </p>
+                              </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -158,7 +150,7 @@
                     <div class="row d-flex">
                         <p class="col-lg-12 footer-text text-center">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | KOHWA | template by <a href="https://colorlib.com" target="_blank">Colorlib</a> | developed by <a href="https://github.com/toshioue" target="_blank">toshioue</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                     </div>
                 </div>
