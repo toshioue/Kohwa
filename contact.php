@@ -93,7 +93,7 @@ if (mail($to, $subject, $body, $headers))
                               </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="causes.html">Causes</a></li>
-                            <li class="nav-item "><a class="nav-link" href="blog.html">Press Release</a></li>
+                            <li class="nav-item "><a class="nav-link" href="blog.php">Press Release</a></li>
                             <!--<li class="nav-item submenu dropdown">
                               <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
                               <ul class="dropdown-menu">
@@ -105,8 +105,8 @@ if (mail($to, $subject, $body, $headers))
                           <!--	<li class="nav-item submenu dropdown">
                               <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
                               <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                                <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+                                <li class="nav-item"><a class="nav-link" href="blog.php">Blog</a></li>
+                                <li class="nav-item"><a class="nav-link" href="single-blog.php">Blog Details</a></li>
                               </ul>
                             </li> -->
                             <li class="nav-item active"><a class="nav-link" href="contact.php">Contact</a></li>
@@ -176,13 +176,22 @@ if (mail($to, $subject, $body, $headers))
 
                 </div>
         </div>
-        <div class="text-center"><h3>Follow Us on Social Media!</h1></hr></div>
+        <div class="text-center"><h3>Follow Us on Social Media!</h3></hr></div>
         <div class="row text-center">
           <div class="col-lg-6">
             <a id="fa" href="#" class="fa fa_2 fa-facebook"></a>
         </div>
         <div class="col-lg-6">
           <a id="in" href="#" class="fa fa_2 fa-instagram"></a></div>
+      </div>
+      <div class="text-center mt-3"><h3>Donate to our Cause!</h3></hr>
+        <form action="https://www.paypal.com/donate" method="post" target="_top">
+        <input type="hidden" name="business" value="2DJMD32DSLEFU" />
+        <input type="hidden" name="item_name" value="Koupwelihki Oh Wauneki Atail-sohso" />
+        <input type="hidden" name="currency_code" value="USD" />
+        <input type="submit" class="primary_btn mr-18" value="Donate Now" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+        <!--<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />-->
+        </form>
       </div>
 
     </section>
@@ -233,7 +242,7 @@ if (mail($to, $subject, $body, $headers))
                               <li><a href="index.html">Home</a></li>
                               <li><a href="about-us.html">About</a></li>
                               <li><a href="causes.html">Causes</a></li>
-                              <li><a href="blog.html">Press Release</a></li>
+                              <li><a href="blog.php">Press Release</a></li>
                               <li><a href="contact.php">Contact</a></li>
                             </ul>
                         </div>
@@ -257,7 +266,7 @@ if (mail($to, $subject, $body, $headers))
                                     <span class="fa fa-location-arrow"></span>
                                     Head Office
                                 </p>
-                                <p>123, Main Street, Your City</p>
+                                <p>Kolonia, Pohnpei Federated States of Micronesia 96941</p>
 
                                 <p class="sm-head">
                                     <span class="fa fa-phone"></span>

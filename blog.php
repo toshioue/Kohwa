@@ -132,8 +132,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="blog_left_sidebar">
-                            <article class="row blog_item">
+                        <div id="blog" class="blog_left_sidebar">
+                          <!--  <article class="row blog_item">
                                <div class="col-md-3">
                                    <div class="blog_info text-right">
                                         <div class="post_tag">
@@ -141,7 +141,7 @@
                                             <a class="active" href="#">Technology,</a>
                                             <a href="#">Politics,</a>
                                             <a href="#">Lifestyle</a>-->
-                                        </div>
+                                      <!--  </div>
                                         <ul class="blog_meta list">
                                             <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
                                             <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
@@ -169,7 +169,7 @@
                                             <a class="active" href="#">Technology,</a>
                                             <a href="#">Politics,</a>
                                             <a href="#">Lifestyle</a>-->
-                                        </div>
+                                    <!--    </div>
                                         <ul class="blog_meta list">
                                             <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
                                             <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
@@ -197,7 +197,7 @@
                                             <a class="active" href="#">Technology,</a>
                                             <a href="#">Politics,</a>
                                             <a href="#">Lifestyle</a>-->
-                                        </div>
+                                  <!--      </div>
                                         <ul class="blog_meta list">
                                             <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
                                             <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
@@ -225,7 +225,7 @@
                                             <a class="active" href="#">Technology,</a>
                                             <a href="#">Politics,</a>
                                             <a href="#">Lifestyle</a>-->
-                                        </div>
+                                    <!--    </div>
                                         <ul class="blog_meta list">
                                             <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
                                             <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
@@ -253,7 +253,7 @@
                                             <a class="active" href="#">Technology,</a>
                                             <a href="#">Politics,</a>
                                             <a href="#">Lifestyle</a>-->
-                                        </div>
+                                    <!--    </div>
                                         <ul class="blog_meta list">
                                             <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
                                             <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
@@ -493,7 +493,7 @@
                                         <span class="fa fa-location-arrow"></span>
                                         Head Office
                                     </p>
-                                    <p>123, Main Street, Your City</p>
+                                    <p>Kolonia, Pohnpei Federated States of Micronesia 96941</p>
 
                                     <p class="sm-head">
                                         <span class="fa fa-phone"></span>
@@ -546,5 +546,27 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <script src="js/jquery.ajaxchimp.min.js"></script>
         <script src="js/mail-script.js"></script>
         <script src="js/theme.js"></script>
+        <script src="js/ajax.js"></script>
+        <script>
+        //load main div with posts from DB
+        $( document ).ready(function() {
+            console.log( "ready!" );
+            AJAX_GET('server.php', {'action' : '2', 'blog' : '1'}, loadPosts, '');
+        });
+
+        function loadPosts(result){
+          //load 3 most recent posts in homepage
+          result = JSON.parse(result);
+          console.log(result[1]);
+          console.log(result[0]);
+
+          if(result[0]){
+            $('#blog').html(result[0]);
+          }else{
+            $('#blog').html('<div class="text-center col-lg-12"><p class="lead">Sorry, there are no posts at this time.</p></div>');
+          }
+
+        }
+        </script>
     </body>
 </html>

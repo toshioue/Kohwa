@@ -45,7 +45,7 @@
 									</ul>
 								</li>
 								<li class="nav-item"><a class="nav-link" href="causes.html">Causes</a></li>
-                <li class="nav-item "><a class="nav-link" href="blog.html">Press Release</a></li>
+                <li class="nav-item "><a class="nav-link" href="blog.php">Press Release</a></li>
 								<!--<li class="nav-item submenu dropdown">
 									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
 									<ul class="dropdown-menu">
@@ -765,7 +765,7 @@
 								<li><a href="#">Home</a></li>
 								<li><a href="about-us.html">About</a></li>
 								<li><a href="causes.html">Causes</a></li>
-								<li><a href="blog.html">Press Release</a></li>
+								<li><a href="blog.php">Press Release</a></li>
 								<li><a href="contact.php">Contact</a></li>
 							</ul>
 						</div>
@@ -820,7 +820,7 @@
 				<div class="row d-flex">
 					<p class="col-lg-12 footer-text text-center">
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | KOHWA | <small>This modified template is made with by <a href="https://colorlib.com" target="_blank">Colorlib</a><small> 
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | KOHWA | <small>This modified template is made with by <a href="https://colorlib.com" target="_blank">Colorlib</a><small>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 				</div>
 			</div>
@@ -853,10 +853,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   function loadThree(result){
     //load 3 most recent posts in homepage
     result = JSON.parse(result);
-    console.log(result[0]);
+    //console.log(result[1]);
+  //  console.log(result[0]);
 
     if(result[0]){
-      $('#BlogThree').html(result[0])
+      $('#BlogThree').html(result[0]);
     }else{
       $('#BlogThree').html('<div class="text-center col-lg-12"><p class="lead">Sorry, there are no posts at this time.</p></div>');
     }

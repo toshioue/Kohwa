@@ -43,7 +43,7 @@
                                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                                     <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
                                     <li class="nav-item"><a class="nav-link" href="causes.html">Causes</a>
-                                    <li class="nav-item active"><a class="nav-link" href="blog.html">Press Release</a>
+                                    <li class="nav-item active"><a class="nav-link" href="blog.php">Press Release</a>
                                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                                 </ul>
                             </div>

@@ -57,7 +57,7 @@ include 'functions.php';
                         <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></spanblog.php
                             <span class="icon-bar"></span>
                         </button>
                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,12 +74,12 @@ include 'functions.php';
                                   </ul>
                                 </li>
                                 <li class="nav-item"><a class="nav-link" href="causes.html">Causes</a>
-                                <li class="nav-item "><a class="nav-link" href="blog.html">Press Release</a></li>
+                                <li class="nav-item "><a class="nav-link" href="blog.php">Press Release</a></li>
                                 <!--<li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
                                     <ul class="dropdown-menu">
-                                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="blog.php">Blog</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="single-blog.php">Blog Details</a></li>
                                     </ul>
                                 </li>-->
                                 <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
@@ -314,7 +314,7 @@ editor.isReady
                               <li><a href="index.html">Home</a></li>
                               <li><a href="#">About</a></li>
                               <li><a href="causes.html">Causes</a></li>
-                              <li><a href="blog.html">Press Release</a></li>
+                              <li><a href="blog.php">Press Release</a></li>
                               <li><a href="contact.php">Contact</a></li>
                             </ul>
                         </div>

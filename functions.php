@@ -284,7 +284,7 @@ $title = '';
 }
 
 //function to get all posts from DB
-function getAllPosts($db, $getThree){
+function getAllPosts($db, $getThree, $blog = false){
 $content = '';
 $date = '';
 $title = '';
@@ -301,12 +301,14 @@ $posts = [];
   DateCreated Date NOT NULL,
   */
   if($getThree){
-  $query = "SELECT PostID, Title, Content, Thumbnail, DateCreated  FROM Posts ORDER BY PostID DESC LIMIT 3";
+  $query = "SELECT PostID, Title, Content, Thumbnail, DateCreated  FROM Posts ORDER BY PostID DESC LIMIT ?";
   }
   $stmt = $db->stmt_init();
   $stmt->prepare($query);
   //bind
-  //$stmt->bind_param('i', $postID);
+  if($getThree){
+  $stmt->bind_param('i', $getThree);
+}
   $sucess = $stmt->execute();
   //check to see if DB insert was successful if not print DB error
   if(!$sucess || $db->affected_rows == 0){
@@ -329,6 +331,7 @@ $posts = [];
             if(!$thumb){
               $thumb = 'img/story/s1.jpg"';
             }
+          if(!$blog){
           $cards .= '<div class="col-lg-4 col-md-6">
             <div class="single-story">
               <div class="story-thumb">
@@ -353,6 +356,37 @@ $posts = [];
               </div>
             </div>
           </div>';
+        }else{
+          $cards .= '<article class="row blog_item">
+               <div class="col-md-3">
+                   <div class="blog_info text-right">
+                        <div class="post_tag">
+                            <!--<a href="#">Food,</a>
+                            <a class="active" href="#">Technology,</a>
+                            <a href="#">Politics,</a>
+                            <a href="#">Lifestyle</a>-->
+                        </div>
+                        <ul class="blog_meta list">
+                            <li><a href="#">Admin<i class="lnr lnr-user"></i></a></li>
+                            <li><a href="#">'. $date . '<i class="lnr lnr-calendar-full"></i></a></li>
+                            <!--<li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
+                            <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>-->
+                        </ul>
+                    </div>
+               </div>
+                <div class="col-md-9">
+                    <div class="blog_post">
+                      <a href="single-blog.php?postID=' . $id . '"><h2>' . $title . '</h2></a>
+                        <img src=" '. $thumb .'" alt=" ' . $title .'">
+                        <div class="blog_details">
+                            <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.</p>
+                            <a href="single-blog.php?postID='. $id . '" class="primary_btn btn-lg btn-block">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </article>';
+        }
+
         }else{
         $cards .= '<div class="card"> <div class="card-body"><h5 class="card-title">' . $id . '. ' . $title . '</h5><p class="card-text">' . $date .'</p><button onclick="loadPost(' . $id . ')" class="btn btn-secondary">View</button></div></div>';
         }

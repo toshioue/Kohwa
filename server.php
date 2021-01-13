@@ -50,13 +50,18 @@ if(isset($_POST['content']) && isset($_POST['subj']) && isset($_POST['date']) &&
    }elseif(isset($_GET['postID'])){
 
         getPost($db, htmlspecialchars($_GET['postID']));
-  //if GET action is set, get All Posts
+  //if GET action is set, get All Posts p
 } else if(isset($_GET['action'])){
-  if($_GET['action'] == 1){
+  if($_GET['action'] == 1){ //returns all Posts in DB
+    //0 signifies all post will be returned
     getAllPosts($db, 0);
-  }else if($_GET['action'] == 2){
-    getAllPosts($db, 1);
-
+  }else if($_GET['action'] == 2){ //returns only 3
+    //3 signifies only 3 posts will be returned
+    if(isset($_GET['blog']) && $_GET['blog'] == 1){
+      getAllPosts($db, 100, true);
+    }else{
+      getAllPosts($db, 3);
+    }
   }else{
     echo 'Action was not recognized';
     $db->close();
